@@ -28,7 +28,7 @@ const Index = () => {
     },
     {
       title: "Personal Portfolio Website",
-      link: "#",
+      link: "https://dhruvozhaportfolio.netlify.app/",
       description: "Designed and developed a personal portfolio website to showcase projects, technical skills, and contact information.",
       techStack: ["React", "HTML", "CSS", "JavaScript"],
       role: "Built reusable React components, designed the UI, and implemented responsive layouts.",
