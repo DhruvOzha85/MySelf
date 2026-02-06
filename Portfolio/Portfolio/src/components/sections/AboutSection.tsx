@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { interests } from "@/data/portfolio";
-import profilePhoto from "@/assets/profile-placeholder.jpg";
+import profilePhoto from "@/assets/profile-photo.jpg";
 
 export function AboutSection() {
   return (
