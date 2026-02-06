@@ -30,7 +30,7 @@ export const projects = [
     description: "A pixel-perfect clone of a popular website showcasing frontend development skills with responsive design and modern CSS techniques.",
     image: "/image.png",
     techStack: ["HTML", "CSS", "JavaScript"],
-    liveUrl: "https://webcloneproject.netlify.app/",
+    liveUrl: "https://cloneproject-two.vercel.app/",
     githubUrl: "https://github.com/DhruvOzha85/Clone_Website",
     featured: true,
   },
@@ -63,7 +63,7 @@ export const certificates = [
     issuer: "aws-Forage",
     description: "Cloud architecture and design principles for scalable applications.",
     date: "2026",
-    url: "https://img.sanishtech.com/u/fc4db9f0d86dfb1ef07e684f4ec07420.png",
+    url: "https://image2url.com/r2/default/images/1770374809523-480df9bb-cd31-4d70-b617-4072ce88666e.png",
   },
   {
     id: 2,
@@ -71,7 +71,7 @@ export const certificates = [
     issuer: "be10X",
     description: "Hands-on experience with popular AI tools and their applications in software development.",
     date: "2026",
-    url: "https://img.sanishtech.com/u/074b37a72c732b73d4fc25ac32c0108b.png",
+    url: "https://image2url.com/r2/default/images/1770375003938-0b96e9e0-02f4-4ec3-826c-cb00be8b0f6d.png",
   },
   {
     id: 3,
@@ -79,7 +79,7 @@ export const certificates = [
     issuer: "Skyscanner-Forage",
     description: "Building responsive user interfaces and implementing frontend best practices.",
     date: "2026",
-    url: "https://img.sanishtech.com/u/bbba1e9081bc4759e3ba939914db2cc0.png",
+    url: "https://image2url.com/r2/default/images/1770375042239-b9b1c110-4bf4-4ea6-a468-cebf108b4795.png",
   },
   {
     id: 4,
@@ -87,7 +87,7 @@ export const certificates = [
     issuer: "Walmart-Forage",
     description: "Advanced software development concepts, including design patterns and system architecture.",
     date: "2026",
-    url: "https://img.sanishtech.com/u/edfd2ee0c92a242a0ca960dae4e5a9ca.png",
+    url: "https://image2url.com/r2/default/images/1770375073906-bedfe421-5e5b-4fd0-9c54-8d9f4c6b1b8e.png",
   },
   {
     id: 5,
@@ -95,7 +95,7 @@ export const certificates = [
     issuer: "Wells Fargo-Forage",
     description: "Comprehensive software engineering principles, including coding, testing, and deployment.",
     date: "2026",
-    url: "https://img.sanishtech.com/u/2ea2bfb911890ad8308d1d5a9a79565f.png",
+    url: "https://image2url.com/r2/default/images/1770375099768-7381ac72-c120-46b0-a2ff-657a357b2ece.png",
   },
   {
     id: 6,

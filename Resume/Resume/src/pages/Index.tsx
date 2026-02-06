@@ -21,14 +21,14 @@ const Index = () => {
   const projects = [
     {
       title: "Website Clone Project",
-      link: "https://webcloneproject.netlify.app/",
+      link: "https://cloneproject-two.vercel.app/",
       description: "Developed a responsive clone of an existing website with a focus on layout accuracy, clean UI, and mobile responsiveness.",
       techStack: ["HTML", "CSS", "JavaScript"],
       role: "Designed the user interface and implemented a fully responsive frontend layout.",
     },
     {
       title: "Personal Portfolio Website",
-      link: "https://dhruvozhaportfolio.netlify.app/",
+      link: "https://dhruvozha-portfolio.vercel.app/",
       description: "Designed and developed a personal portfolio website to showcase projects, technical skills, and contact information.",
       techStack: ["React", "HTML", "CSS", "JavaScript"],
       role: "Built reusable React components, designed the UI, and implemented responsive layouts.",

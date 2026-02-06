@@ -51,7 +51,7 @@ export function ResumeSection() {
                 onClick={() => {
                   // Placeholder - will be replaced with actual resume link
                   // alert("Resume will be available soon! Please add your resume PDF.");
-                  window.open("https://dhruvozharesume.netlify.app/", "_blank");
+                  window.open("https://dhruvozha-resume.vercel.app/", "_blank");
                 }}
               >
                 <Eye className="h-5 w-5 mr-2" />
