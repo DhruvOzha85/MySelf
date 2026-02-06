@@ -63,7 +63,7 @@ export const certificates = [
     issuer: "aws-Forage",
     description: "Cloud architecture and design principles for scalable applications.",
     date: "2026",
-    url: "https://image2url.com/r2/default/images/1770374809523-480df9bb-cd31-4d70-b617-4072ce88666e.png",
+    url: "https://res.cloudinary.com/dd80on9gu/image/upload/v1770378457/aws_b0q1nf.png",
   },
   {
     id: 2,
@@ -71,7 +71,7 @@ export const certificates = [
     issuer: "be10X",
     description: "Hands-on experience with popular AI tools and their applications in software development.",
     date: "2026",
-    url: "https://image2url.com/r2/default/images/1770375003938-0b96e9e0-02f4-4ec3-826c-cb00be8b0f6d.png",
+    url: "https://res.cloudinary.com/dd80on9gu/image/upload/v1770378458/be10X_m0i8ux.png",
   },
   {
     id: 3,
@@ -79,7 +79,7 @@ export const certificates = [
     issuer: "Skyscanner-Forage",
     description: "Building responsive user interfaces and implementing frontend best practices.",
     date: "2026",
-    url: "https://image2url.com/r2/default/images/1770375042239-b9b1c110-4bf4-4ea6-a468-cebf108b4795.png",
+    url: "https://res.cloudinary.com/dd80on9gu/image/upload/v1770378457/Skyscanner_lwosws.png",
   },
   {
     id: 4,
@@ -87,7 +87,7 @@ export const certificates = [
     issuer: "Walmart-Forage",
     description: "Advanced software development concepts, including design patterns and system architecture.",
     date: "2026",
-    url: "https://image2url.com/r2/default/images/1770375073906-bedfe421-5e5b-4fd0-9c54-8d9f4c6b1b8e.png",
+    url: "https://res.cloudinary.com/dd80on9gu/image/upload/v1770378457/Walmart_i1wslf.png",
   },
   {
     id: 5,
@@ -95,7 +95,7 @@ export const certificates = [
     issuer: "Wells Fargo-Forage",
     description: "Comprehensive software engineering principles, including coding, testing, and deployment.",
     date: "2026",
-    url: "https://image2url.com/r2/default/images/1770375099768-7381ac72-c120-46b0-a2ff-657a357b2ece.png",
+    url: "https://res.cloudinary.com/dd80on9gu/image/upload/v1770378457/Wells_Fargo_kctplx.png",
   },
   {
     id: 6,
