@@ -30,7 +30,7 @@ export const projects = [
     description: "A pixel-perfect clone of a popular website showcasing frontend development skills with responsive design and modern CSS techniques.",
     image: "/image.png",
     techStack: ["HTML", "CSS", "JavaScript"],
-    liveUrl: "https://cloneproject-two.vercel.app/",
+    liveUrl: "https://clonewebsite-one.vercel.app/",
     githubUrl: "https://github.com/DhruvOzha85/Clone_Website",
     featured: true,
   },

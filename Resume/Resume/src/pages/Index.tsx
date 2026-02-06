@@ -21,7 +21,7 @@ const Index = () => {
   const projects = [
     {
       title: "Website Clone Project",
-      link: "https://cloneproject-two.vercel.app/",
+      link: "https://clonewebsite-one.vercel.app/",
       description: "Developed a responsive clone of an existing website with a focus on layout accuracy, clean UI, and mobile responsiveness.",
       techStack: ["HTML", "CSS", "JavaScript"],
       role: "Designed the user interface and implemented a fully responsive frontend layout.",
