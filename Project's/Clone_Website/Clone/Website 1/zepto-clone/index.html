@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>zepto - Groceries in Minutes</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="top-header">
+                <div class="logo">
+                    <span class="logo-text">zepto</span>
+                    <div class="badge">CITIZEN SAVER</div>
+                </div>
+                
+                <div class="location">
+                    <span>Select Location</span>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2"/></svg>
+                </div>
+
+                <div class="search-bar">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="#666" stroke-width="2"/><path d="M20 20l-3-3" stroke="#666" stroke-width="2"/></svg>
+                    <input type="text" placeholder="Search for products...">
+                </div>
+
+                <div class="user-actions">
+                    <div class="action-btn">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="2"/><path d="M6 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2" stroke="currentColor" stroke-width="2"/></svg>
+                        <span>Login</span>
+                    </div>
+                    <div class="action-btn">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M9 2L7 8H21L19 2H9z" stroke="currentColor" stroke-width="2"/><circle cx="9" cy="20" r="2" stroke="currentColor" stroke-width="2"/><circle cx="18" cy="20" r="2" stroke="currentColor" stroke-width="2"/><path d="M7 8l1 12h12" stroke="currentColor" stroke-width="2"/></svg>
+                        <span>Cart</span>
+                    </div>
+                </div>
+
+                <div class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+
+            <nav class="main-nav">
+                <a href="index.html" class="nav-item active">
+                    <span class="nav-icon">🏪</span>
+                    <span>All</span>
+                </a>
+                <a href="products.html" class="nav-item">
+                    <span class="nav-icon">☕</span>
+                    <span>Cafe</span>
+                </a>
+                <a href="products.html" class="nav-item">
+                    <span class="nav-icon">🏠</span>
+                    <span>Home</span>
+                </a>
+                <a href="products.html" class="nav-item">
+                    <span class="nav-icon">🧸</span>
+                    <span>Toys</span>
+                </a>
+                <a href="products.html" class="nav-item">
+                    <span class="nav-icon">🥬</span>
+                    <span>Fresh</span>
+                </a>
+                <a href="categories.html" class="nav-item">
+                    <span class="nav-icon">📱</span>
+                    <span>Electronics</span>
+                </a>
+                <a href="categories.html" class="nav-item">
+                    <span class="nav-icon">📱</span>
+                    <span>Mobiles</span>
+                </a>
+                <a href="categories.html" class="nav-item">
+                    <span class="nav-icon">💄</span>
+                    <span>Beauty</span>
+                </a>
+                <a href="categories.html" class="nav-item">
+                    <span class="nav-icon">👗</span>
+                    <span>Fashion</span>
+                </a>
+                <a href="about.html" class="nav-item">
+                    <span class="nav-icon">ℹ️</span>
+                    <span>About Us</span>
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-search">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="#666" stroke-width="2"/><path d="M20 20l-3-3" stroke="#666" stroke-width="2"/></svg>
+            <input type="text" placeholder="Search for products...">
+        </div>
+        <nav class="mobile-nav">
+            <a href="index.html">All</a>
+            <a href="products.html">Cafe</a>
+            <a href="products.html">Home</a>
+            <a href="products.html">Fresh</a>
+            <a href="categories.html">Electronics</a>
+            <a href="categories.html">Beauty</a>
+            <a href="about.html">About</a>
+        </nav>
+    </div>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Explore Section -->
+        <section class="explore-section">
+            <div class="container">
+                <div class="section-header">
+                    <p class="section-tag">MORE TO LOVE</p>
+                    <h2 class="section-title">Explore more &<br>uncover hidden gems</h2>
+                </div>
+                <div class="category-circles">
+                    <a href="products.html" class="circle-item">
+                        <div class="circle-icon">📱</div>
+                        <p>Mobile<br>Accessories</p>
+                    </a>
+                    <a href="products.html" class="circle-item">
+                        <div class="circle-icon">🏠</div>
+                        <p>Home<br>Appliances</p>
+                    </a>
+                    <a href="products.html" class="circle-item">
+                        <div class="circle-icon">👓</div>
+                        <p>Eyewear &<br>More</p>
+                    </a>
+                    <a href="products.html" class="circle-item">
+                        <div class="circle-icon">🧩</div>
+                        <p>Blocks &<br>Puzzles</p>
+                    </a>
+                    <a href="products.html" class="circle-item">
+                        <div class="circle-icon">👜</div>
+                        <p>Bags &<br>Accessories</p>
+                    </a>
+                    <a href="products.html" class="circle-item">
+                        <div class="circle-icon">🎾</div>
+                        <p>Pet Treats &<br>Toys</p>
+                    </a>
+                    <a href="products.html" class="circle-item">
+                        <div class="circle-icon">🔊</div>
+                        <p>Speakers &<br>More</p>
+                    </a>
+                    <a href="products.html" class="circle-item">
+                        <div class="circle-icon">🔋</div>
+                        <p>Battery<br>Extensions</p>
+                    </a>
+                    <a href="products.html" class="circle-item">
+                        <div class="circle-icon">🎨</div>
+                        <p>Crafts &<br>Hobby</p>
+                    </a>
+                    <a href="products.html" class="circle-item">
+                        <div class="circle-icon">🍳</div>
+                        <p>Kitchen<br>Appliances</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Home Needs Section -->
+        <section class="products-section">
+            <div class="container">
+                <div class="section-flex-header">
+                    <h2 class="section-title">Get Your Home Needs</h2>
+                    <a href="products.html" class="see-all">See All ›</a>
+                </div>
+                <div class="products-grid">
+                    <div class="product-card">
+                        <div class="product-image"><img src="https://tse3.mm.bing.net/th/id/OIP.nWyKrJsxEeKq4zKgqFH3iAHaHa?rs=1&pid=ImgDetMain&o=7&rm=3" alt="" height="100%" width="100%"></div>
+                        <div class="product-info">
+                            <div class="price-row">
+                                <span class="price">₹1019</span>
+                                <span class="old-price">₹2999</span>
+                            </div>
+                            <button class="add-btn">ADD</button>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image"><img src="https://th.bing.com/th/id/OPAC.ZCFpYFkE0tHmXQ474C474?w=200&h=220&c=17&pid=21.1" alt="" height="100%" width="100%"></div>
+                        <div class="product-info">
+                            <div class="price-row">
+                                <span class="price">₹1499</span>
+                                <span class="old-price">₹2999</span>
+                            </div>
+                            <button class="add-btn">ADD</button>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image"><img src="https://th.bing.com/th/id/OPAC.SzUwLLStEAIOQg474C474?w=220&h=220&c=17&o=5&pid=21.1" alt="" height="100%" width="100%"></div>
+                        <div class="product-info">
+                            <div class="price-row">
+                                <span class="price">₹2949</span>
+                                <span class="old-price">₹5999</span>
+                            </div>
+                            <button class="add-btn">ADD</button>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image"><img src="https://th.bing.com/th/id/OPAC.h5xaGaKkyBHe4A474C474?w=220&h=220&c=17&o=5&pid=21.1" alt="" height="100%" width="100%"></div>
+                        <div class="product-info">
+                            <div class="price-row">
+                                <span class="price">₹1999</span>
+                                <span class="old-price">₹4999</span>
+                            </div>
+                            <button class="add-btn">ADD</button>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image"><img src="https://th.bing.com/th?id=OPAC.lMY%2b0%2bxEHw%2bNFQ474C474&w=220&h=220&c=17&o=5&pid=21.1" alt="" height="100%" width="100%"></div>
+                        <div class="product-info">
+                            <div class="price-row">
+                                <span class="price">₹1799</span>
+                                <span class="old-price">₹4999</span>
+                            </div>
+                            <button class="add-btn">ADD</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Coffee Section -->
+        <section class="featured-section coffee-bg">
+            <div class="container">
+                <div class="featured-grid">
+                    <div class="featured-left">
+                        <p class="section-tag">COFFEE LOVERS</p>
+                        <h2 class="featured-title">Dive into the world of fresh brew</h2>
+                        <button class="more-btn">More Items ›</button>
+                    </div>
+                    <div class="featured-products">
+                        <div class="product-card-horizontal">
+                            <div class="product-image"><img src="https://th.bing.com/th/id/OPAC.MWxL6j4wC1kV7g474C474?w=220&h=220&c=17&o=5&pid=21.1" alt="" height="100%" width="100%"></div>
+                            <div class="product-details">
+                                <div class="price-badge">₹99 <span class="strike">₹179</span> SAVE ₹80</div>
+                                <p class="product-name">Hazelnut Cappuccino</p>
+                                <p class="product-desc">100% Arabica</p>
+                                <div class="rating">★ 4 (5 Ok)</div>
+                                <button class="add-btn">ADD</button>
+                            </div>
+                        </div>
+                        <div class="product-card-horizontal">
+                            <div class="product-image"><img src="https://th.bing.com/th?id=OPAC.%2fOOcH9ATP%2fLJTw474C474&w=220&h=210&c=17&o=5&pid=21.1" alt="" height="100%" width="100%"></div>
+                            <div class="product-details">
+                                <div class="price-badge">₹99 <span class="strike">₹149</span> SAVE ₹50</div>
+                                <p class="product-name">Hot Chocolate</p>
+                                <div class="rating">★ 4.2 (33.8k)</div>
+                                <button class="add-btn">ADD</button>
+                            </div>
+                        </div>
+                        <div class="product-card-horizontal">
+                            <div class="product-image"><img src="https://th.bing.com/th/id/OPAC.LTHoK79BWJunoA474C474?w=220&h=220&c=17&o=5&pid=21.1" alt="" height="100%" width="100%"></div>
+                            <div class="product-details">
+                                <div class="price-badge">₹99 <span class="strike">₹169</span> SAVE ₹70</div>
+                                <p class="product-name">Cappuccino</p>
+                                <p class="product-desc">100% Arabica</p>
+                                <div class="rating">★ 4.6 (8.8k)</div>
+                                <button class="add-btn">ADD</button>
+                            </div>
+                        </div>
+                        <div class="product-card-horizontal">
+                            <div class="product-image"><img src="data:image/webp;base64,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" alt="" height="100%" width="100%"></div>
+                            <div class="product-details">
+                                <div class="price-badge">₹99 <span class="strike">₹149</span> SAVE ₹50</div>
+                                <p class="product-name">Hot Americano</p>
+                                <p class="product-desc">100% Arabica</p>
+                                <div class="rating">★ 4.1 (3.2k)</div>
+                                <button class="add-btn">ADD</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Wholesome Menus -->
+        <section class="featured-section wholesome-bg">
+            <div class="container">
+                <div class="featured-grid">
+                    <div class="featured-left">
+                        <p class="section-tag">WHOLESOME MENUS</p>
+                        <h2 class="featured-title">Delight in every bite with these delicacies</h2>
+                        <button class="more-btn">More Items ›</button>
+                    </div>
+                    <div class="featured-products">
+                        <div class="product-card-horizontal">
+                            <div class="product-image"><img src="https://tse4.mm.bing.net/th/id/OIP.2P2xmwp69P66f-08CH5dYwHaEK?rs=1&pid=ImgDetMain&o=7&rm=3" alt="" height="100%" width="100%"></div>
+                            <div class="product-details">
+                                <div class="price-badge">₹179 <span class="strike">₹199</span> SAVE ₹20</div>
+                                <p class="product-name">Chole Kulche</p>
+                                <p class="product-desc">Serves 1</p>
+                                <div class="rating">★ 4.3 (44.7k)</div>
+                                <button class="add-btn">ADD</button>
+                            </div>
+                        </div>
+                        <div class="product-card-horizontal">
+                            <div class="product-image"><img src="https://orders.popskitchen.in/storage/2024/09/image-51.png" alt="" height="100%" width="100%"></div>
+                            <div class="product-details">
+                                <div class="price-badge">₹179 <span class="strike">₹199</span> SAVE ₹20</div>
+                                <p class="product-name">Dal Makhani & Rice</p>
+                                <div class="rating">★ 4.1 (71k)</div>
+                                <button class="add-btn">ADD</button>
+                            </div>
+                        </div>
+                        <div class="product-card-horizontal">
+                            <div class="product-image"><img src="https://tse1.mm.bing.net/th/id/OIP.mYEYF4cc0Fawmy_KIlKRLAHaFT?rs=1&pid=ImgDetMain&o=7&rm=3" alt="" height="100%" width="100%"></div>
+                            <div class="product-details">
+                                <div class="price-badge">₹189 <span class="strike">₹209</span> SAVE ₹20</div>
+                                <p class="product-name">Chole & Rice</p>
+                                <div class="rating">★ 4.2 (8.7k)</div>
+                                <button class="add-btn">ADD</button>
+                            </div>
+                        </div>
+                        <div class="product-card-horizontal">
+                            <div class="product-image"><img src="https://th.bing.com/th/id/OIP.t7sxmbA3QV3m1GeoicSI8AHaJ4?o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3" alt="" height="100%" width="100%"></div>
+                            <div class="product-details">
+                                <div class="price-badge">₹149 <span class="strike">₹169</span> SAVE ₹20</div>
+                                <p class="product-name">Chole & Chapati</p>
+                                <div class="rating">★ 4.2 (40.2k)</div>
+                                <button class="add-btn">ADD</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- New In Store -->
+        <section class="products-section">
+            <div class="container">
+                <div class="section-flex-header">
+                    <h2 class="section-title">New In Store</h2>
+                    <a href="products.html" class="see-all">See All ›</a>
+                </div>
+                <div class="products-grid">
+                    <div class="product-card">
+                        <div class="product-image"><img src="https://cdn.zeptonow.com/production/tr:w-403,ar-2000-2000,pr-true,f-auto,q-40,dpr-2/cms/product_variant/59c065a9-d115-44fd-bd1c-a79df47b0086.jpeg" alt="" height="100%" width="100%"></div>
+                        <div class="product-info">
+                            <div class="price-row">
+                                <span class="price">₹183</span>
+                                <span class="old-price">₹295</span>
+                            </div>
+                            <button class="add-btn">ADD</button>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image"><img src="https://cdn.zeptonow.com/production/tr:w-403,ar-1200-1200,pr-true,f-auto,q-40,dpr-2/cms/product_variant/68a48bf5-84c9-4816-b61c-73abde3c2399.jpeg" alt="" height="100%" width="100%"></div>
+                        <div class="product-info">
+                            <div class="price-row">
+                                <span class="price">₹57</span>
+                                <span class="old-price">₹75</span>
+                            </div>
+                            <button class="add-btn notify-btn">⏰ Notify</button>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image"><img src="https://cdn.zeptonow.com/production/tr:w-403,ar-679-679,pr-true,f-auto,q-40,dpr-2/cms/product_variant/4e2e3b73-d6bf-4eb3-afb7-2dec80a54299.jpeg" alt="" height="100%" width="100%"></div>
+                        <div class="product-info">
+                            <div class="price-row">
+                                <span class="price">₹173</span>
+                                <span class="old-price">₹265</span>
+                            </div>
+                            <button class="add-btn">ADD</button>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image"><img src="https://cdn.zeptonow.com/production/tr:w-403,ar-1200-1200,pr-true,f-auto,q-40,dpr-2/cms/product_variant/22bc6d34-12c2-4b2f-89d9-2633e47097db.jpeg" alt="" height="100%" width="100%"></div>
+                        <div class="product-info">
+                            <div class="price-row">
+                                <span class="price">₹259</span>
+                                <span class="old-price">₹440</span>
+                            </div>
+                            <button class="add-btn">ADD</button>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image"><img src="https://cdn.zeptonow.com/production/tr:w-403,ar-1200-1200,pr-true,f-auto,q-40,dpr-2/cms/product_variant/3f68079b-27b6-4709-9747-00f5a9feea34.jpeg" alt="" height="100%" width="100%"></div>
+                        <div class="product-info">
+                            <div class="price-row">
+                                <span class="price">₹212</span>
+                                <span class="old-price">₹325</span>
+                            </div>
+                            <button class="add-btn">ADD</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Banner Sections -->
+        <section class="banner-section">
+            <div class="container">
+                <div class="banner paan-banner">
+                    <h2>Paan Corner</h2>
+                    <p>Get smoking accessories, fresheners & more in 10 mins<br>this monsoon with Zepto!</p>
+                    <button class="order-btn">Order Now</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="promo-section">
+            <div class="container">
+                <div class="promo-grid">
+                    <div class="promo-card super-sonic">
+                        <h3>Super Sonic</h3>
+                        <p>UP TO 80% OFF</p>
+                    </div>
+                    <div class="promo-card beauty-lit">
+                        <h3>Beauty LIT FEST</h3>
+                        <p>UP TO 60% OFF</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo">zepto</div>
+                    <p>© Zepto Marketplace Private Limited</p>
+                    <p class="small-text">fssai lic no : 11224999000872</p>
+                    <div class="social-icons">
+                        <a href="#" aria-label="Instagram">📷</a>
+                        <a href="#" aria-label="Twitter">🐦</a>
+                        <a href="#" aria-label="Facebook">📘</a>
+                        <a href="#" aria-label="LinkedIn">💼</a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="about.html">Home</a></li>
+                        <li><a href="#">Delivery Areas</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Customer Support</a></li>
+                        <li><a href="#">Press</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Use</a></li>
+                        <li><a href="#">Responsible Disclosure Policy</a></li>
+                        <li><a href="#">Sell on Zepto</a></li>
+                        <li><a href="#">Deliver with Zepto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Download App</h4>
+                    <div class="app-buttons">
+                        <a href="#" class="app-btn">
+                            <span>▶</span> Get it on play store
+                        </a>
+                        <a href="#" class="app-btn">
+                            <span>🍎</span> Get it on app store
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        hamburger.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+            hamburger.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>
