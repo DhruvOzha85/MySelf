@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Github, Linkedin, Instagram, Youtube, ArrowDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -13,6 +14,50 @@ const socialIcons = [
 
 export function HeroSection() {
   const { playClick } = useSound();
+  const [text, setText] = useState("");
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [loopNum, setLoopNum] = useState(0);
+  const [typingSpeed, setTypingSpeed] = useState(150);
+
+  const toRotate = [
+    "Aspiring Software Developer",
+    "Full Stack Web Developer",
+    "Frontend Specialist",
+    "Tech Enthusiast"
+  ];
+
+  useEffect(() => {
+    const ticker = setTimeout(() => {
+      tick();
+    }, typingSpeed);
+
+    return () => clearTimeout(ticker);
+  }, [text]);
+
+  const tick = () => {
+    let i = loopNum % toRotate.length;
+    let fullText = toRotate[i];
+    let updatedText = isDeleting
+      ? fullText.substring(0, text.length - 1)
+      : fullText.substring(0, text.length + 1);
+
+    setText(updatedText);
+
+    if (isDeleting) {
+      setTypingSpeed((prev) => prev / 2);
+    }
+
+    if (!isDeleting && updatedText === fullText) {
+      setIsDeleting(true);
+      setTypingSpeed(2000); // Pause at end
+    } else if (isDeleting && updatedText === "") {
+      setIsDeleting(false);
+      setLoopNum(loopNum + 1);
+      setTypingSpeed(500); // Pause before new word
+    } else {
+      setTypingSpeed(100); // Normal typing speed
+    }
+  };
 
   const scrollTo = (href: string) => {
     playClick();
@@ -53,9 +98,10 @@ export function HeroSection() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5 }}
-            className="text-2xl md:text-3xl font-display text-foreground/80"
+            className="text-2xl md:text-3xl font-display text-foreground/80 h-[40px] flex items-center justify-center"
           >
-            Aspiring Software Developer
+            <span>{text}</span>
+            <span className="animate-pulse ml-1">|</span>
           </motion.h2>
 
           <motion.p
@@ -64,7 +110,7 @@ export function HeroSection() {
             transition={{ delay: 0.6 }}
             className="max-w-2xl mx-auto text-muted-foreground text-lg"
           >
-            Passionate about building beautiful, functional web applications. 
+            Passionate about building beautiful, functional web applications.
             I love turning ideas into reality through clean code and creative design.
           </motion.p>
 
@@ -72,22 +118,39 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.7 }}
-            className="flex flex-wrap items-center justify-center gap-4 pt-4"
+            className="flex flex-col items-center gap-4 pt-4"
           >
-            <Button
-              size="lg"
-              className="gradient-bg text-primary-foreground hover:opacity-90 transition-opacity"
-              onClick={() => scrollTo("#projects")}
+            <div className="flex flex-wrap items-center justify-center gap-4">
+              <Button
+                size="lg"
+                className="gradient-bg text-primary-foreground hover:opacity-90 transition-opacity"
+                onClick={() => scrollTo("#projects")}
+              >
+                View Projects
+              </Button>
+              <Button
+                size="lg"
+                variant="outline"
+                onClick={() => scrollTo("#contact")}
+              >
+                Contact Me
+              </Button>
+            </div>
+
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.9 }}
             >
-              View Projects
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              onClick={() => scrollTo("#contact")}
-            >
-              Contact Me
-            </Button>
+              <Button
+                size="lg"
+                variant="ghost"
+                className="text-primary hover:text-primary-foreground transition-all duration-300 border-2 border-dashed border-primary/50 hover:border-primary hover:bg-primary/90 px-8 disabled:opacity-50 disabled:pointer-events-none ring-offset-background"
+                onClick={() => window.open("https://dhruvozha-resume.vercel.app/", "_blank")}
+              >
+                View Resume
+              </Button>
+            </motion.div>
           </motion.div>
 
           <motion.div
@@ -113,22 +176,23 @@ export function HeroSection() {
           </motion.div>
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.2 }}
-          className="absolute bottom-10 left-1/2 -translate-x-1/2"
-        >
-          <motion.button
-            onClick={() => scrollTo("#about")}
-            className="p-2 rounded-full text-muted-foreground hover:text-primary transition-colors"
-            animate={{ y: [0, 10, 0] }}
-            transition={{ repeat: Infinity, duration: 2 }}
-          >
-            <ArrowDown className="h-6 w-6" />
-          </motion.button>
-        </motion.div>
       </div>
+
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.2 }}
+        className="absolute bottom-0 left-1/2 -translate-x-1/2"
+      >
+        <motion.button
+          onClick={() => scrollTo("#about")}
+          className="p-2 rounded-full text-muted-foreground hover:text-primary transition-colors"
+          animate={{ y: [0, 10, 0] }}
+          transition={{ repeat: Infinity, duration: 2 }}
+        >
+          <ArrowDown className="h-6 w-6" />
+        </motion.button>
+      </motion.div>
     </section>
   );
 }

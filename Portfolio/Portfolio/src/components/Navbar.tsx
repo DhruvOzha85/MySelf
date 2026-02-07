@@ -73,7 +73,7 @@ export function Navbar() {
           </ul>
 
           <div className="flex items-center gap-2">
-            <Button
+            {/* <Button
               variant="ghost"
               size="icon"
               onClick={() => {
@@ -83,7 +83,7 @@ export function Navbar() {
               className="relative"
             >
               {soundEnabled ? <Volume2 className="h-5 w-5" /> : <VolumeX className="h-5 w-5" />}
-            </Button>
+            </Button> */}
             <Button
               variant="ghost"
               size="icon"

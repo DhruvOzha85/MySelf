@@ -1,11 +1,12 @@
 import { motion } from "framer-motion";
-import { Mail, Github, Linkedin, Instagram, Youtube, Send } from "lucide-react";
+import { Mail, Github, Linkedin, Instagram, Youtube, Send, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { socialLinks } from "@/data/portfolio";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { toast } from "sonner";
+import emailjs from '@emailjs/browser';
 
 const socialIcons = [
   { icon: Github, href: socialLinks.github, label: "GitHub" },
@@ -15,22 +16,41 @@ const socialIcons = [
 ];
 
 export function ContactSection() {
+  const form = useRef<HTMLFormElement>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     message: "",
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Placeholder for form submission
-    toast.success("Thank you for your message! I'll get back to you soon.");
-    setFormData({ name: "", email: "", message: "" });
+    setIsSubmitting(true);
+
+    // THESE ARE PLACEHOLDERS - USER MUST REPLACE THEM
+    const SERVICE_ID = "YOUR_SERVICE_ID";
+    const TEMPLATE_ID = "YOUR_TEMPLATE_ID";
+    const PUBLIC_KEY = "YOUR_PUBLIC_KEY";
+
+    try {
+      if (form.current) {
+        await emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, form.current, PUBLIC_KEY);
+        toast.success("Message sent successfully! I'll get back to you soon.");
+        setFormData({ name: "", email: "", message: "" });
+      }
+    } catch (error) {
+      console.error("EmailJS Error:", error);
+      toast.error("Failed to send message. Please try again later.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
     <section id="contact" className="section-padding">
       <div className="container mx-auto px-4">
+        {/* ... (existing header code) ... */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -55,12 +75,13 @@ export function ContactSection() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="space-y-8"
           >
+            {/* ... (existing contact info code) ... */}
             <div>
               <h3 className="text-2xl font-display font-semibold mb-4">
                 Let's Connect
               </h3>
               <p className="text-muted-foreground">
-                I'm always open to discussing new opportunities, interesting 
+                I'm always open to discussing new opportunities, interesting
                 projects, or just having a chat about technology.
               </p>
             </div>
@@ -109,39 +130,54 @@ export function ContactSection() {
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form ref={form} onSubmit={handleSubmit} className="space-y-6">
               <div>
                 <Input
                   placeholder="Your Name"
+                  name="user_name"
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                   required
                   className="h-12"
+                  disabled={isSubmitting}
                 />
               </div>
               <div>
                 <Input
                   type="email"
                   placeholder="Your Email"
+                  name="user_email"
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                   required
                   className="h-12"
+                  disabled={isSubmitting}
                 />
               </div>
               <div>
                 <Textarea
                   placeholder="Your Message"
+                  name="message"
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                   required
                   rows={5}
                   className="resize-none"
+                  disabled={isSubmitting}
                 />
               </div>
-              <Button type="submit" size="lg" className="w-full gradient-bg">
-                <Send className="h-5 w-5 mr-2" />
-                Send Message
+              <Button type="submit" size="lg" className="w-full gradient-bg" disabled={isSubmitting}>
+                {isSubmitting ? (
+                  <>
+                    <Loader2 className="h-5 w-5 mr-2 animate-spin" />
+                    Sending...
+                  </>
+                ) : (
+                  <>
+                    <Send className="h-5 w-5 mr-2" />
+                    Send Message
+                  </>
+                )}
               </Button>
             </form>
           </motion.div>

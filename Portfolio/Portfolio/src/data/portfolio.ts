@@ -8,12 +8,12 @@ export const socialLinks = {
 };
 
 export const skills = [
-  { name: "HTML", level: 90, icon: "🌐" },
-  { name: "CSS", level: 85, icon: "🎨" },
-  { name: "JavaScript", level: 80, icon: "⚡" },
-  { name: "React", level: 80, icon: "⚛️" },
-  { name: "MongoDB", level: 80, icon: "🍃" },
-  { name: "C Language", level: 90, icon: "💻" },
+  { name: "HTML", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" },
+  { name: "CSS", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" },
+  { name: "JavaScript", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" },
+  { name: "React", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
+  { name: "MongoDB", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" },
+  { name: "C Language", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg" },
 ];
 
 export const interests = [

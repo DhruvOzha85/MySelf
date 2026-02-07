@@ -29,27 +29,17 @@ export function SkillsSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              whileHover={{ y: -5 }}
-              className="bg-card rounded-xl p-6 border border-border hover:border-primary/50 transition-colors shadow-sm hover:shadow-lg"
+              whileHover={{ scale: 1.05 }}
+              className="bg-card rounded-xl p-6 border border-border hover:border-primary/50 transition-all shadow-sm hover:shadow-lg hover:shadow-primary/5 flex flex-col items-center justify-center gap-4 group"
             >
-              <div className="flex items-center gap-3 mb-4">
-                <span className="text-3xl">{skill.icon}</span>
-                <h3 className="text-lg font-display font-semibold">{skill.name}</h3>
+              <div className="relative w-16 h-16 flex items-center justify-center bg-secondary/50 rounded-full p-3 group-hover:bg-primary/10 transition-colors">
+                <img
+                  src={skill.icon}
+                  alt={skill.name}
+                  className="w-full h-full object-contain transition-all duration-300"
+                />
               </div>
-              <div className="space-y-2">
-                <div className="flex justify-between text-sm">
-                  <span className="text-muted-foreground">Proficiency</span>
-                  <span className="font-medium">{skill.level}%</span>
-                </div>
-                <motion.div
-                  initial={{ width: 0 }}
-                  whileInView={{ width: "100%" }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 1, delay: 0.3 + index * 0.1 }}
-                >
-                  <Progress value={skill.level} className="h-2" />
-                </motion.div>
-              </div>
+              <h3 className="text-lg font-display font-semibold group-hover:text-primary transition-colors">{skill.name}</h3>
             </motion.div>
           ))}
         </div>
