@@ -441,3 +441,127 @@ Design Constraints:
 
 Goal:
 Demonstrate active coding practice and problem-solving consistency using real-time visual analytics.
+
+Refine and simplify the existing portfolio while maintaining a clean, modern, and professional look.
+
+==============================
+
+SKILLS SECTION MODIFICATION
+
+==============================
+
+Remove all proficiency percentages, levels, or progress bars.
+
+Do NOT display skill levels (no %, no "advanced", no rating).
+
+Present skills as clean icon-based cards only.
+
+Use official or recognizable technology logos for each skill:
+
+HTML → HTML5 logo
+
+CSS → CSS3 logo
+
+JavaScript → JS logo
+
+React → React logo
+
+MongoDB → MongoDB leaf logo
+
+C Language → Official C language document-style icon
+
+Each skill card should contain:
+
+Logo
+
+Skill name
+
+Add subtle hover animation (scale or soft glow).
+
+Keep layout minimal and responsive.
+
+Goal:
+
+Show confidence without exaggeration. Let projects demonstrate proficiency.
+
+==============================
+
+CERTIFICATES SECTION MODIFICATION
+
+==============================
+
+When clicking on a certificate card:
+
+Open the certificate in a modal (popup overlay) within the same page.
+
+Do NOT open in a new tab.
+
+Modal Requirements:
+
+Dark overlay background
+
+Centered certificate preview
+
+Close button (top-right corner)
+
+Smooth fade-in animation
+
+Close on outside click
+
+Modal must be responsive and scrollable if needed.
+
+Maintain professional styling consistent with the site.
+
+Goal:
+
+Improve UX and keep users on the same page.
+
+==============================
+
+RESUME SECTION SIMPLIFICATION
+
+==============================
+
+Reduce the size of the Resume section.
+
+Remove the large resume card.
+
+Remove hover-based multiple options.
+
+Instead:
+
+Add a single clean button labeled "View Resume"
+
+Place this button in the Hero section
+
+Position it below "View Projects" and "Contact" buttons
+
+Clicking the button should open the resume link/webpage in a new tab.
+
+Keep design minimal and professional.
+
+Goal:
+
+Simplify recruiter access and reduce clutter.
+
+==============================
+
+OVERALL DESIGN CONSTRAINTS
+
+==============================
+
+Maintain premium and minimalist aesthetic.
+
+Avoid visual clutter.
+
+Keep animations subtle.
+
+Ensure fast loading and strong performance.
+
+Preserve responsiveness across all devices.
+
+FINAL OBJECTIVE:
+
+Make the portfolio cleaner, more confident, and more product-like by removing unnecessary indicators and focusing on real skills, projects, and certifications.
+
+make a visible box around the View resume ...like view project and contact me ..but in different style
