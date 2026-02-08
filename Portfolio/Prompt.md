@@ -208,24 +208,6 @@ Goal:
 Allow recruiters to quickly preview or download the resume with minimal friction.
 
 ==============================
-SUBTLE SOUND FEEDBACK (OPTIONAL BUT ENABLED)
-==============================
-
-- Add very subtle sound feedback for interactions:
-  - Light click sound on button clicks
-  - Soft hover sound on primary CTA buttons (optional)
-- Sound must be:
-  - Low volume
-  - Non-distracting
-  - Premium and minimal
-- Include a sound toggle option (ON/OFF).
-- Default sound state: OFF or remembered from last preference.
-- Ensure sounds do not autoplay on page load.
-
-Goal:
-Enhance interactivity without annoying the user.
-
-==============================
 THEME TOGGLE (LIGHT / DARK MODE)
 ==============================
 
