@@ -12,8 +12,9 @@ instagram: https://www.instagram.com/dhruv.ozha/
 Youtube: https://www.youtube.com/@DhruvOzha
 Leetcode: https://leetcode.com/u/DhruvOzha/
 Twitter: https://x.com/dhruvozha85
-LinkedIn: https://www.linkedin.com/in/dhruvps://github.com/DhruvOzha85  -ozha-bb378639b/  
-Live Project / Clone Website: https://webcloneproject.netlify.app/
+LinkedIn: https://www.linkedin.com/in/dhruv-ozha-bb378639b/  
+Live Project / Clone Website: https://clonewebsite-one.vercel.app/
+Portfolio: https://dhruvozha-portfolio.vercel.app/
 
 =================================
 TECH STACK & TOOLS
