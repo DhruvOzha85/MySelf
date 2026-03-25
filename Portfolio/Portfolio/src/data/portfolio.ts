@@ -63,7 +63,7 @@ export const certificates = [
     issuer: "Sangam University",
     description: "Secured III position by developing the CropPilot website for Innovation and Technological Advancement.",
     date: "15 March, 2026",
-    url: "/su-hackathon.jpg",
+    url: "https://res.cloudinary.com/dyahoqmz5/image/upload/v1774419414/SU_Hackathon_gqgfzn.jpg",
   },
   {
     id: 2,
