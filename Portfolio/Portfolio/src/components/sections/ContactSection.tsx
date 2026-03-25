@@ -28,9 +28,10 @@ export function ContactSection() {
     e.preventDefault();
     setIsSubmitting(true);
 
-    const SERVICE_ID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
-    const TEMPLATE_ID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
-    const PUBLIC_KEY = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
+    // Using Vite's import.meta.env instead of process.env
+    const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID as string;
+    const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID as string;
+    const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY as string;
 
     if (!SERVICE_ID || !TEMPLATE_ID || !PUBLIC_KEY) {
       toast.error("Email service is temporarily unavailable. Missing Configuration.");
