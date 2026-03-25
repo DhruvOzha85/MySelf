@@ -28,10 +28,16 @@ export function ContactSection() {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // THESE ARE PLACEHOLDERS - USER MUST REPLACE THEM
-    const SERVICE_ID = "YOUR_SERVICE_ID";
-    const TEMPLATE_ID = "YOUR_TEMPLATE_ID";
-    const PUBLIC_KEY = "YOUR_PUBLIC_KEY";
+    const SERVICE_ID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
+    const TEMPLATE_ID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
+    const PUBLIC_KEY = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
+
+    if (!SERVICE_ID || !TEMPLATE_ID || !PUBLIC_KEY) {
+      toast.error("Email service is temporarily unavailable. Missing Configuration.");
+      console.error("Missing one or more EmailJS environment variables.");
+      setIsSubmitting(false);
+      return;
+    }
 
     try {
       if (form.current) {

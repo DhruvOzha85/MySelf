@@ -14,6 +14,8 @@ Leetcode: https://leetcode.com/u/DhruvOzha/
 Twitter: https://x.com/dhruvozha85
 LinkedIn: https://www.linkedin.com/in/dhruv-ozha-bb378639b/  
 Live Project / Clone Website: https://clonewebsite-one.vercel.app/
+CropPilot: https://croppilot-su.vercel.app/
+AI Adaptive Onboarding Engine: https://iisc-hack.vercel.app/
 Portfolio: https://dhruvozha-portfolio.vercel.app/
 
 =================================
