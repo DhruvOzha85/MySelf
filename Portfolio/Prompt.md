@@ -550,3 +550,80 @@ FINAL OBJECTIVE:
 Make the portfolio cleaner, more confident, and more product-like by removing unnecessary indicators and focusing on real skills, projects, and certifications.
 
 make a visible box around the View resume ...like view project and contact me ..but in different style
+
+Update my existing portfolio webpage with precise layout and content improvements while strictly preserving the current design system. Do not alter the existing color palette, typography, UI components, spacing scale, or visual theme. The goal is to improve structure, alignment, and content clarity without redesigning the interface.
+
+🧩 Scope of Work
+
+Only implement the changes listed below. Avoid adding new sections, removing sections, or introducing new design styles.
+
+🎯 1. Hero Section Layout Optimization
+Convert the Hero section into a two-column layout:
+Left Column (Content)
+Right Column (Image)
+Align all Hero content (heading, subheading, description, CTA buttons) to the left side.
+Ensure proper vertical alignment (centered or slightly top-balanced) depending on existing design.
+Maintain consistent spacing between elements using the current spacing system.
+Ensure a clear visual hierarchy:
+Primary heading (most prominent)
+Supporting text (secondary emphasis)
+CTA buttons (clearly visible, not overcrowded)
+🖼️ 2. Image Repositioning (About → Hero)
+Move the profile image currently used in the About section into the right column of the Hero section.
+Image Requirements:
+Maintain original aspect ratio
+High quality (no pixelation or distortion)
+Proper alignment (centered within its container)
+Should not overflow or break layout
+Ensure:
+Balanced spacing between text (left) and image (right)
+Clean, professional composition
+Responsive scaling across devices
+📄 3. About Section Enhancement
+Increase the height and spacing of the About section to improve readability.
+Ensure the section does not feel cramped.
+Maintain consistency with the existing layout system.
+✍️ 4. About Section Content Structure
+Add exactly 3 paragraphs in the About section.
+Each paragraph must:
+Be approximately 3 lines long
+Be concise, meaningful, and relevant to a personal portfolio
+Content Guidelines:
+Paragraph 1: Introduction (who I am, what I do)
+Paragraph 2: Skills / expertise / interests
+Paragraph 3: Goals / mindset / passion
+Ensure:
+Proper line spacing
+Readable font size (aligned with existing typography scale)
+Balanced margins and padding
+📱 5. Responsiveness Requirements
+Desktop: Two-column Hero layout (text left, image right)
+Tablet: Maintain structure with adjusted spacing
+Mobile:
+Stack layout vertically
+Text appears first, image below
+Maintain readability and spacing
+🎨 6. Design Constraints (Strict)
+❌ Do NOT change:
+Colors
+Fonts
+Theme
+UI style
+Component design
+✅ ONLY adjust:
+Layout structure
+Alignment
+Spacing
+Content placement
+🧠 7. Final Output Expectations
+
+The final result must:
+
+Look clean, modern, and premium
+Have strong visual balance between text and image
+Feel structured and intentional (not random placement)
+Avoid clutter, misalignment, or inconsistent spacing
+Maintain original design identity while improving usability
+⚠️ Important Instruction
+
+Do not improvise design decisions beyond the instructions. Follow the requirements strictly and ensure pixel-level alignment consistency wherever possible.
