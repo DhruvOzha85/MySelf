@@ -16,7 +16,7 @@ export function useSound() {
   const playClick = useCallback(() => {
     if (!soundEnabled) return;
     
-    // Create a subtle click sound using Web Audio API
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const audioContext = new (window.AudioContext || (window as any).webkitAudioContext)();
     const oscillator = audioContext.createOscillator();
     const gainNode = audioContext.createGain();

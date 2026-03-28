@@ -12,8 +12,11 @@ export function BackgroundEffects() {
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
-      mouseX.set(e.clientX);
-      mouseY.set(e.clientY);
+      // Use requestAnimationFrame for smoother performance
+      requestAnimationFrame(() => {
+        mouseX.set(e.clientX);
+        mouseY.set(e.clientY);
+      });
     };
 
     window.addEventListener("mousemove", handleMouseMove);

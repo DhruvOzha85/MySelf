@@ -1,11 +1,13 @@
 import { motion } from "framer-motion";
-import { FileText, Download, Eye } from "lucide-react";
+import { FileText, Eye } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { ResumeAssembly3D } from "@/components/ResumeAssembly3D";
 
 export function ResumeSection() {
   return (
-    <section id="resume" className="section-padding bg-secondary/30">
-      <div className="container mx-auto px-4">
+    <section id="resume" className="section-padding bg-secondary/30 relative overflow-hidden">
+      <ResumeAssembly3D />
+      <div className="container mx-auto px-4 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}

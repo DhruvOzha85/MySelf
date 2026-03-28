@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { skillCategories } from "@/data/portfolio";
+import { skillCategories, type Skill } from "@/data/portfolio";
 
 export function SkillsSection() {
   const allSkills = skillCategories.flatMap((category) => category.skills);
@@ -39,7 +39,7 @@ export function SkillsSection() {
                     <img
                       src={skill.icon}
                       alt={skill.name}
-                      className={`w-full h-full object-contain transition-all duration-300 ${(skill as any).invertDark ? "dark:invert" : ""}`}
+                      className={`w-full h-full object-contain transition-all duration-300 ${skill.invertDark ? "dark:invert" : ""}`}
                     />
                   </div>
                   <span className="text-sm md:text-base font-display font-semibold transition-colors text-center whitespace-nowrap">
@@ -59,7 +59,7 @@ export function SkillsSection() {
                     <img
                       src={skill.icon}
                       alt={skill.name}
-                      className={`w-full h-full object-contain transition-all duration-300 ${(skill as any).invertDark ? "dark:invert" : ""}`}
+                      className={`w-full h-full object-contain transition-all duration-300 ${skill.invertDark ? "dark:invert" : ""}`}
                     />
                   </div>
                   <span className="text-sm md:text-base font-display font-semibold transition-colors text-center whitespace-nowrap">

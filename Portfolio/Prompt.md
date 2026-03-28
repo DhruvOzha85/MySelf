@@ -627,3 +627,308 @@ Maintain original design identity while improving usability
 ⚠️ Important Instruction
 
 Do not improvise design decisions beyond the instructions. Follow the requirements strictly and ensure pixel-level alignment consistency wherever possible.
+do this
+> **Remove the dark/light toggle** and replace it with a **Theme Selector Button** (🎨 palette icon + "Theme" label). When clicked, it opens a beautiful theme picker. Selecting any theme **completely transforms the entire website** — every pixel, every shadow, every glow, every font weight, every surface adapts to that theme's unique personality.
+>
+> ---
+>
+> ### 🔘 Theme Button & Picker UI
+>
+> - Button shows the **active theme's accent color** as a small dot/ring indicator
+> - Opens a **floating glassmorphism panel** with smooth fade + slide-down animation
+> - Themes displayed as **rich preview cards** in a 2–3 column grid showing:
+>   - Theme name + emoji icon
+>   - A **live mini-preview strip** — tiny mock navbar, body, and button in that theme's colors
+>   - Active theme has a **glowing border** in its accent color + checkmark badge
+> - Panel closes on outside click or `Escape` key
+> - **Search/filter bar** at the top of the panel to filter themes by name
+>
+> ---
+>
+> ### 🌈 Themes to Implement (10 Unique Themes)
+>
+> | # | Theme | Personality |
+> |---|---|---|
+> | 1 | ☀️ **Light** | Clean, minimal, professional white |
+> | 2 | 🌑 **Dark** | Classic deep dark with purple glow |
+> | 3 | 🌊 **Ocean** | Deep navy seas, cyan waves, bioluminescent glow |
+> | 4 | 🌲 **Forest** | Earthy dark greens, moss tones, amber light |
+> | 5 | 🌅 **Sunset** | Warm coral, burnt orange, golden light bleeds |
+> | 6 | 🍬 **Candy** | Soft pastel pink, lavender, mint freshness |
+> | 7 | 🌌 **Midnight** | Deep indigo galaxy, violet nebula, stardust glow |
+> | 8 | 🖤 **Monochrome** | Pure grayscale, no hue, ink and paper |
+> | 9 | 🔥 **Ember** | Volcanic dark bg, molten red/orange lava accents |
+> | 10 | 🌸 **Sakura** | Soft Japanese blush pink, white, gold leaf accents |
+>
+> ---
+>
+> ### ⚙️ CSS Variables — Every Theme Must Define ALL of These
+>
+> ```css
+> [data-theme="ocean"] {
+>
+>   /* ── BACKGROUNDS ── */
+>   --bg-root: #020c18;              /* Page root / html background */
+>   --bg-primary: #041528;           /* Main body background */
+>   --bg-secondary: #071e36;         /* Section / alt background */
+>   --bg-card: #0a2540;              /* Card surfaces */
+>   --bg-card-hover: #0d2e4e;        /* Card on hover */
+>   --bg-modal: #061b32;             /* Modal / dialog background */
+>   --bg-navbar: rgba(4,21,40,0.85); /* Navbar (semi-transparent blur) */
+>   --bg-sidebar: #041528;           /* Sidebar background */
+>   --bg-footer: #020c18;            /* Footer background */
+>   --bg-input: #0a2540;             /* Input / textarea background */
+>   --bg-tooltip: #0d2e4e;           /* Tooltip background */
+>   --bg-dropdown: #0a2540;          /* Dropdown menus */
+>   --bg-code: #031020;              /* Code blocks background */
+>   --bg-badge: #0a2540;             /* Badge/tag background */
+>   --bg-selection: #00b4d840;       /* Text selection highlight color */
+>
+>   /* ── BACKGROUND LIGHTING & ATMOSPHERIC GLOW ── */
+>   --glow-primary: #00b4d8;         /* Primary glow color */
+>   --glow-secondary: #0077b6;       /* Secondary glow color */
+>   --bg-glow-hero: radial-gradient(ellipse 80% 60% at 50% -10%, #00b4d830, transparent);
+>   --bg-glow-section: radial-gradient(ellipse 60% 40% at 80% 50%, #0077b620, transparent);
+>   --bg-glow-footer: radial-gradient(ellipse 50% 60% at 20% 100%, #00b4d815, transparent);
+>   --bg-noise-overlay: url("noise.svg"); /* Optional subtle noise texture */
+>   --bg-grid-lines: rgba(0,180,216,0.04); /* Subtle grid overlay color */
+>   --ambient-light: 0 0 120px 40px #00b4d810; /* Box shadow ambient light effect */
+>   --hero-spotlight: radial-gradient(circle at 50% 40%, #00b4d818 0%, transparent 70%);
+>
+>   /* ── TEXT & TYPOGRAPHY ── */
+>   --text-primary: #e0f4ff;         /* Main body text */
+>   --text-secondary: #90c8e0;       /* Secondary / supporting text */
+>   --text-muted: #4a7a94;           /* Placeholder, captions, hints */
+>   --text-disabled: #2a4a5a;        /* Disabled state text */
+>   --text-inverse: #020c18;         /* Text on accent/light backgrounds */
+>   --text-heading: #ffffff;         /* H1, H2, H3 headings */
+>   --text-link: #00b4d8;            /* Hyperlinks */
+>   --text-link-hover: #48cae4;      /* Link hover */
+>   --text-code: #7de8ff;            /* Inline code text */
+>   --text-highlight: #00b4d8;       /* Highlighted/marked text color */
+>   --text-error: #ff6b6b;
+>   --text-success: #52e3a4;
+>   --text-warning: #ffd166;
+>
+>   /* ── TYPOGRAPHY STYLE ── */
+>   --font-family-heading: 'Inter', 'Sora', sans-serif;
+>   --font-family-body: 'Inter', 'DM Sans', sans-serif;
+>   --font-family-mono: 'JetBrains Mono', 'Fira Code', monospace;
+>   --font-weight-heading: 700;      /* Heading boldness per theme */
+>   --font-weight-body: 400;
+>   --font-weight-emphasis: 600;
+>   --letter-spacing-heading: -0.03em;
+>   --letter-spacing-body: 0.01em;
+>   --line-height-body: 1.75;
+>   --text-rendering: optimizeLegibility;
+>
+>   /* ── ACCENT & BRAND COLORS ── */
+>   --accent-primary: #00b4d8;       /* Main brand/accent color */
+>   --accent-secondary: #0077b6;     /* Secondary accent */
+>   --accent-tertiary: #48cae4;      /* Tertiary accent / highlights */
+>   --accent-subtle: #00b4d810;      /* Very subtle accent tint for backgrounds */
+>   --accent-muted: #005f7a;         /* Muted accent for less emphasis */
+>
+>   /* ── BUTTONS ── */
+>   --btn-primary-bg: #00b4d8;
+>   --btn-primary-text: #020c18;
+>   --btn-primary-hover-bg: #48cae4;
+>   --btn-primary-shadow: 0 4px 20px #00b4d840;
+>   --btn-primary-hover-shadow: 0 6px 30px #00b4d860;
+>   --btn-secondary-bg: transparent;
+>   --btn-secondary-text: #00b4d8;
+>   --btn-secondary-border: #00b4d8;
+>   --btn-secondary-hover-bg: #00b4d815;
+>   --btn-ghost-text: #90c8e0;
+>   --btn-ghost-hover-bg: #0a2540;
+>   --btn-disabled-bg: #0a2540;
+>   --btn-disabled-text: #2a4a5a;
+>   --btn-border-radius: 8px;
+>   --btn-font-weight: 600;
+>   --btn-letter-spacing: 0.03em;
+>   --btn-glow-effect: 0 0 20px #00b4d850; /* Glow on hover */
+>
+>   /* ── BORDERS & DIVIDERS ── */
+>   --border-color: #0d2e4e;
+>   --border-color-strong: #1a4060;
+>   --border-color-subtle: #071e3640;
+>   --border-accent: #00b4d840;
+>   --border-radius-sm: 6px;
+>   --border-radius-md: 12px;
+>   --border-radius-lg: 20px;
+>   --border-radius-pill: 9999px;
+>   --divider-color: #0d2e4e;
+>
+>   /* ── SHADOWS & DEPTH ── */
+>   --shadow-sm: 0 2px 8px #00050a60;
+>   --shadow-md: 0 4px 20px #00050a80;
+>   --shadow-lg: 0 10px 40px #00050a90;
+>   --shadow-xl: 0 20px 60px #00050aa0;
+>   --shadow-glow: 0 0 30px #00b4d825;
+>   --shadow-inset: inset 0 1px 0 #00b4d815;
+>   --shadow-card: 0 4px 24px #00050a70, 0 0 0 1px #0d2e4e;
+>   --shadow-navbar: 0 4px 30px #00050a90, 0 0 60px #00b4d808;
+>   --shadow-btn: 0 4px 14px #00b4d835;
+>   --shadow-input-focus: 0 0 0 3px #00b4d825;
+>
+>   /* ── INPUTS & FORMS ── */
+>   --input-bg: #0a2540;
+>   --input-border: #1a4060;
+>   --input-border-focus: #00b4d8;
+>   --input-text: #e0f4ff;
+>   --input-placeholder: #4a7a94;
+>   --input-shadow-focus: 0 0 0 3px #00b4d820;
+>   --input-border-radius: 8px;
+>   --label-color: #90c8e0;
+>   --checkbox-accent: #00b4d8;
+>   --toggle-track-bg: #0a2540;
+>   --toggle-thumb-bg: #00b4d8;
+>
+>   /* ── NAVBAR ── */
+>   --navbar-bg: rgba(4,21,40,0.85);
+>   --navbar-blur: blur(20px);
+>   --navbar-border-bottom: 1px solid #0d2e4e;
+>   --navbar-shadow: 0 4px 30px #00050a80;
+>   --navbar-text: #e0f4ff;
+>   --navbar-link-hover: #00b4d8;
+>   --navbar-link-active: #00b4d8;
+>   --navbar-link-active-bg: #00b4d815;
+>
+>   /* ── CARDS ── */
+>   --card-bg: #0a2540;
+>   --card-border: 1px solid #0d2e4e;
+>   --card-shadow: 0 4px 24px #00050a70;
+>   --card-hover-shadow: 0 8px 40px #00050a90, 0 0 20px #00b4d815;
+>   --card-hover-border: 1px solid #00b4d840;
+>   --card-border-radius: 16px;
+>   --card-glow-hover: 0 0 30px #00b4d815;
+>
+>   /* ── SCROLLBAR ── */
+>   --scrollbar-track: #041528;
+>   --scrollbar-thumb: #0d2e4e;
+>   --scrollbar-thumb-hover: #00b4d8;
+>
+>   /* ── MISCELLANEOUS ── */
+>   --skeleton-base: #0a2540;
+>   --skeleton-shine: #0d2e4e;
+>   --overlay-bg: rgba(2,12,24,0.85);
+>   --backdrop-blur: blur(16px);
+>   --progress-bar-bg: #0a2540;
+>   --progress-bar-fill: #00b4d8;
+>   --table-header-bg: #071e36;
+>   --table-row-alt: #0a254008;
+>   --table-border: #0d2e4e;
+>   --tag-bg: #00b4d815;
+>   --tag-text: #00b4d8;
+>   --tag-border: #00b4d830;
+>   --avatar-ring: #00b4d8;
+>   --icon-color: #90c8e0;
+>   --icon-accent: #00b4d8;
+>   --hr-color: #0d2e4e;
+>   --focus-ring: 0 0 0 3px #00b4d840;
+>   --transition-theme: background-color 0.35s ease, color 0.25s ease,
+>                        border-color 0.35s ease, box-shadow 0.35s ease,
+>                        fill 0.25s ease, stroke 0.25s ease;
+> }
+> ```
+>
+> ---
+>
+> ### 🏗️ Technical Implementation Rules
+>
+> **1. Apply theme via HTML attribute:**
+> ```js
+> document.documentElement.setAttribute('data-theme', 'ocean');
+> localStorage.setItem('selectedTheme', 'ocean');
+> ```
+>
+> **2. On page load — no flicker:**
+> ```html
+> <!-- In <head>, before any CSS loads -->
+> <script>
+>   const t = localStorage.getItem('selectedTheme') || 'light';
+>   document.documentElement.setAttribute('data-theme', t);
+> </script>
+> ```
+>
+> **3. Global smooth transition on every element:**
+> ```css
+> *, *::before, *::after {
+>   transition: var(--transition-theme);
+> }
+> ```
+>
+> **4. Background atmospheric lighting on `<body>`:**
+> ```css
+> body {
+>   background-color: var(--bg-primary);
+>   background-image: var(--bg-glow-hero), var(--bg-glow-section);
+>   background-attachment: fixed;
+>   color: var(--text-primary);
+>   font-family: var(--font-family-body);
+>   line-height: var(--line-height-body);
+> }
+> ```
+>
+> **5. Custom scrollbar per theme:**
+> ```css
+> ::-webkit-scrollbar { width: 8px; }
+> ::-webkit-scrollbar-track { background: var(--scrollbar-track); }
+> ::-webkit-scrollbar-thumb { background: var(--scrollbar-thumb); border-radius: 99px; }
+> ::-webkit-scrollbar-thumb:hover { background: var(--scrollbar-thumb-hover); }
+> ```
+>
+> **6. Text selection color per theme:**
+> ```css
+> ::selection { background: var(--bg-selection); color: var(--text-primary); }
+> ```
+>
+> ---
+>
+> ### ✅ Full Acceptance Checklist
+>
+> - [ ] Toggle removed, theme button added in same position
+> - [ ] Panel opens with smooth animation, closes on outside click / `Escape`
+> - [ ] All 10 themes implemented with full variable sets
+> - [ ] **Backgrounds** — root, body, cards, modals, navbar, footer all update
+> - [ ] **Atmospheric lighting** — radial glows, spotlights, ambient light change per theme
+> - [ ] **Typography** — font family, weight, letter spacing, line height adapt per theme
+> - [ ] **Text colors** — primary, secondary, muted, headings, links all change
+> - [ ] **Buttons** — primary, secondary, ghost, disabled all update including glow/shadow
+> - [ ] **Inputs & forms** — bg, border, focus ring, labels, placeholders all themed
+> - [ ] **Cards** — bg, border, shadow, hover glow all themed
+> - [ ] **Navbar** — bg blur, border, shadow, link colors all themed
+> - [ ] **Scrollbar** — track, thumb, hover all themed
+> - [ ] **Icons & SVGs** — color adapts via CSS variable fill/stroke
+> - [ ] **Shadows** — depth and glow shadows all themed (no hardcoded `rgba` black)
+> - [ ] **Skeleton loaders, overlays, tooltips, dropdowns, badges, tags** — all themed
+> - [ ] **Smooth transition** on every property when switching themes
+> - [ ] **No flicker** on page reload (theme applied before paint)
+> - [ ] **Active theme** visually highlighted in picker with glow border + checkmark
+> - [ ] **Zero hardcoded colors** anywhere — 100% CSS variable driven
+in portfolio
+Here's your detailed prompt:
+
+---
+
+**🎨 AI Image / Background Generation Prompt:**
+
+> A futuristic tech website background featuring **abstract 3D geometric shapes** — low-poly wireframe pyramids, floating hexagonal prisms, translucent octahedrons, and shattered polygon fragments suspended in deep space. The shapes are interconnected by glowing thin neon lines suggesting a neural network or data grid. Color palette: **deep midnight navy (#0a0f2c) base**, with glowing accents in **electric cyan (#00f0ff), violet (#7b2fff), and cool white**. Shapes have a glass-morphism / holographic sheen with subtle reflections and depth-of-field blur on distant elements. Soft volumetric fog between layers adds depth. The composition is **asymmetric and layered** — denser clusters on left and bottom, fading to sparse on the right for text readability. Lighting: rim-lit from top-left with a subtle lens flare. Style: **ultra-realistic 3D render, Blender/Cinema4D aesthetic, 8K, dark tech UI background, no text, no people.**
+
+---
+
+**🛠️ Where to use this prompt:**
+
+| Tool | Best For |
+|---|---|
+| **Midjourney** | Highest visual quality |
+| **DALL·E 3** | Quick iterations |
+| **Adobe Firefly** | Commercial-safe use |
+| **Leonardo.AI** | Fine-tuned control |
+| **Stable Diffusion** | Free + customizable |
+
+---
+
+**💡 Tip:** Add `--ar 16:9` at the end for Midjourney to get a widescreen website banner ratio, or `--ar 1:1` for a square section background.
+
+Want me to also **build this directly as an animated Three.js background** for your website instead?

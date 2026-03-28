@@ -1,6 +1,7 @@
 import { Navbar } from "@/components/Navbar";
 import { CustomCursor } from "@/components/CustomCursor";
 import { BackgroundEffects } from "@/components/BackgroundEffects";
+import { Preloader } from "@/components/Preloader";
 import { HeroSection } from "@/components/sections/HeroSection";
 import { AboutSection } from "@/components/sections/AboutSection";
 import { SkillsSection } from "@/components/sections/SkillsSection";
@@ -13,6 +14,7 @@ import { Footer } from "@/components/sections/Footer";
 const Index = () => {
   return (
     <div className="relative min-h-screen overflow-x-hidden">
+      <Preloader />
       <CustomCursor />
       <BackgroundEffects />
       <Navbar />

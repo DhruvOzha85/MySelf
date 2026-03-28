@@ -18,6 +18,24 @@
 
     <link rel="canonical" href="https://dhruvozha.dev" />
     <link rel="icon" type="image/x-icon" href="/public/icon.png" />
+
+    <!-- Anti-flicker: apply saved theme before any CSS loads -->
+    <script>
+      let t = localStorage.getItem('selectedTheme') || 'auto';
+      if (t === 'auto') {
+        const hour = new Date().getHours();
+        if (hour >= 6 && hour < 12) t = "light";
+        else if (hour >= 12 && hour < 16) t = "ocean";
+        else if (hour >= 16 && hour < 19) t = "sunset";
+        else t = "midnight";
+      }
+      document.documentElement.setAttribute('data-theme', t);
+    </script>
+    
+    <!-- Google Fonts for all themes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;700&family=Space+Grotesk:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600;700&family=Sora:wght@400;600;700&display=swap" rel="stylesheet">
   </head>
 
   <body>

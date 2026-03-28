@@ -1,26 +1,31 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Moon, Sun, Volume2, VolumeX } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { navItems } from "@/data/portfolio";
 import { useActiveSection } from "@/hooks/useActiveSection";
-import { useTheme } from "@/hooks/useTheme";
 import { useSound } from "@/hooks/useSound";
+import { ThemePicker } from "@/components/ThemePicker";
 import { cn } from "@/lib/utils";
+import { triggerLiquidTransition } from "@/components/LiquidTransition";
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const activeSection = useActiveSection();
-  const { theme, toggleTheme } = useTheme();
-  const { soundEnabled, toggleSound, playClick } = useSound();
+  const { playClick } = useSound();
 
   const handleClick = (href: string) => {
     playClick();
     setIsOpen(false);
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
+    
+    if (activeSection === href.slice(1)) return;
+
+    triggerLiquidTransition(() => {
+      const element = document.querySelector(href);
+      if (element) {
+        element.scrollIntoView({ behavior: "instant" });
+      }
+    });
   };
 
   return (
@@ -73,35 +78,13 @@ export function Navbar() {
           </ul>
 
           <div className="flex items-center gap-2">
-            {/* <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => {
-                playClick();
-                toggleSound();
-              }}
-              className="relative"
-            >
-              {soundEnabled ? <Volume2 className="h-5 w-5" /> : <VolumeX className="h-5 w-5" />}
-            </Button> */}
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => {
-                playClick();
-                toggleTheme();
-              }}
-            >
-              {theme === "dark" ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
-            </Button>
+            <ThemePicker />
           </div>
         </div>
 
         {/* Mobile Menu Button */}
         <div className="flex items-center gap-2 md:hidden">
-          <Button variant="ghost" size="icon" onClick={toggleTheme}>
-            {theme === "dark" ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
-          </Button>
+          <ThemePicker />
           <Button variant="ghost" size="icon" onClick={() => setIsOpen(!isOpen)}>
             {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </Button>

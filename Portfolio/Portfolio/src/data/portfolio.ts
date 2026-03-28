@@ -1,3 +1,14 @@
+export interface Skill {
+  name: string;
+  icon: string;
+  invertDark?: boolean;
+}
+
+export interface SkillCategory {
+  title: string;
+  skills: Skill[];
+}
+
 export const socialLinks = {
   github: "https://github.com/DhruvOzha85",
   linkedin: "https://www.linkedin.com/in/dhruv-ozha-bb378639b/",
@@ -7,7 +18,7 @@ export const socialLinks = {
   email: "ozhadhruv@gmail.com",
 };
 
-export const skillCategories = [
+export const skillCategories: SkillCategory[] = [
   {
     title: "Frontend",
     skills: [
