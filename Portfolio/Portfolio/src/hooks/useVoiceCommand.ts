@@ -11,7 +11,7 @@ declare global {
   }
 }
 
-export function useVoiceCommand() {
+export function useVoiceCommand(onTourCommand?: (action: 'start' | 'stop') => void) {
   const [isListening, setIsListening] = useState(false);
   const [transcript, setTranscript] = useState("");
   const [feedback, setFeedback] = useState("");
@@ -75,9 +75,21 @@ export function useVoiceCommand() {
       }
     }
 
+    // 3. Tour Commands
+    if (command.includes("start tour") || command.includes("begin tour") || command.includes("give me a tour") || command.includes("guided tour")) {
+      setFeedback("Starting Guided Tour...");
+      onTourCommand?.('start');
+      return;
+    }
+    if (command.includes("stop tour") || command.includes("end tour") || command.includes("cancel tour")) {
+      setFeedback("Stopping tour...");
+      onTourCommand?.('stop');
+      return;
+    }
+
     // Default fallback
     setTimeout(() => setFeedback("Command not recognized"), 1000);
-  }, [setTheme, themes]);
+  }, [setTheme, themes, onTourCommand]);
 
   useEffect(() => {
     // Initialize Web Speech API

@@ -5,6 +5,8 @@ import { Button } from "@/components/ui/button";
 import { socialLinks } from "@/data/portfolio";
 import { useSound } from "@/hooks/useSound";
 import profilePhoto from "@/assets/profile-photo.jpg";
+import { MagneticWrapper } from "@/components/MagneticWrapper";
+import { useQuantumTransition } from "@/hooks/useQuantumTransition";
 
 const socialIcons = [
   { icon: Github, href: socialLinks.github, label: "GitHub" },
@@ -15,6 +17,7 @@ const socialIcons = [
 
 export function HeroSection() {
   const { playClick } = useSound();
+  const { warpTo } = useQuantumTransition();
   const [text, setText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
   const [loopNum, setLoopNum] = useState(0);
@@ -62,10 +65,7 @@ export function HeroSection() {
 
   const scrollTo = (href: string) => {
     playClick();
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
+    warpTo(href);
   };
 
   return (
@@ -124,20 +124,24 @@ export function HeroSection() {
               className="flex flex-col items-center md:items-start gap-4 pt-4"
             >
               <div className="flex flex-wrap items-center justify-center md:justify-start gap-4">
-                <Button
-                  size="lg"
-                  className="gradient-bg text-primary-foreground hover:opacity-90 transition-opacity"
-                  onClick={() => scrollTo("#projects")}
-                >
-                  View Projects
-                </Button>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  onClick={() => scrollTo("#contact")}
-                >
-                  Contact Me
-                </Button>
+                <MagneticWrapper strength={0.4} maxDistance={120}>
+                  <Button
+                    size="lg"
+                    className="gradient-bg text-primary-foreground hover:opacity-90 transition-opacity"
+                    onClick={() => scrollTo("#projects")}
+                  >
+                    View Projects
+                  </Button>
+                </MagneticWrapper>
+                <MagneticWrapper strength={0.4} maxDistance={120}>
+                  <Button
+                    size="lg"
+                    variant="outline"
+                    onClick={() => scrollTo("#contact")}
+                  >
+                    Contact Me
+                  </Button>
+                </MagneticWrapper>
               </div>
 
               <motion.div
@@ -145,14 +149,16 @@ export function HeroSection() {
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.9 }}
               >
-                <Button
-                  size="lg"
-                  variant="ghost"
-                  className="text-primary hover:text-primary-foreground transition-all duration-300 border-2 border-dashed border-primary/50 hover:border-primary hover:bg-primary/90 px-8 disabled:opacity-50 disabled:pointer-events-none ring-offset-background"
-                  onClick={() => window.open("https://dhruvozha-resume.vercel.app/", "_blank")}
-                >
-                  View Resume
-                </Button>
+                <MagneticWrapper strength={0.45} maxDistance={130}>
+                  <Button
+                    size="lg"
+                    variant="ghost"
+                    className="text-primary hover:text-primary-foreground transition-all duration-300 border-2 border-dashed border-primary/50 hover:border-primary hover:bg-primary/90 px-8 disabled:opacity-50 disabled:pointer-events-none ring-offset-background"
+                    onClick={() => window.open("https://dhruvozha-resume.vercel.app/", "_blank")}
+                  >
+                    View Resume
+                  </Button>
+                </MagneticWrapper>
               </motion.div>
             </motion.div>
 
@@ -163,18 +169,19 @@ export function HeroSection() {
               className="flex items-center justify-center md:justify-start gap-4 pt-4"
             >
               {socialIcons.map(({ icon: Icon, href, label }) => (
-                <motion.a
-                  key={label}
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-3 rounded-full bg-secondary hover:bg-primary hover:text-primary-foreground transition-colors"
-                  whileHover={{ scale: 1.1, y: -4 }}
-                  whileTap={{ scale: 0.95 }}
-                  aria-label={label}
-                >
-                  <Icon className="h-5 w-5" />
-                </motion.a>
+                <MagneticWrapper key={label} strength={0.5} maxDistance={80}>
+                  <motion.a
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-12 h-12 flex items-center justify-center rounded-full bg-secondary hover:bg-primary hover:text-primary-foreground transition-colors shrink-0"
+                    whileHover={{ scale: 1.1, y: -4 }}
+                    whileTap={{ scale: 0.95 }}
+                    aria-label={label}
+                  >
+                    <Icon className="h-5 w-5" />
+                  </motion.a>
+                </MagneticWrapper>
               ))}
             </motion.div>
           </motion.div>

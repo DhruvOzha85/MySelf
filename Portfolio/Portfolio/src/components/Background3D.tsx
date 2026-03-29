@@ -326,10 +326,23 @@ export function Background3D() {
     mouse3D.current.set(x * 12, y * 8, 0);
   }, []);
 
+  // Cinematic camera: idle detection + flythrough
+  const lastMouseMove = useRef(Date.now());
+  const isIdleRef = useRef(false);
+
+  const handleMouseMoveWithIdle = useCallback((e: MouseEvent) => {
+    const x = (e.clientX / window.innerWidth) * 2 - 1;
+    const y = -(e.clientY / window.innerHeight) * 2 + 1;
+    mouse3D.current.set(x * 12, y * 8, 0);
+    lastMouseMove.current = Date.now();
+    isIdleRef.current = false;
+  }, []);
+
   useEffect(() => {
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, [handleMouseMove]);
+    window.removeEventListener("mousemove", handleMouseMove);
+    window.addEventListener("mousemove", handleMouseMoveWithIdle);
+    return () => window.removeEventListener("mousemove", handleMouseMoveWithIdle);
+  }, [handleMouseMove, handleMouseMoveWithIdle]);
 
   const shapes = useMemo(() => {
     const arr: ShapeData[] = [];
@@ -364,12 +377,52 @@ export function Background3D() {
     return arr;
   }, [colors]);
 
-  function CameraParallax() {
-    useFrame((state) => {
-      const m = mouse3D.current;
-      state.camera.position.x += (m.x * 0.1 - state.camera.position.x) * 0.02;
-      state.camera.position.y += (m.y * 0.1 - state.camera.position.y) * 0.02;
-      state.camera.lookAt(0, 0, 0);
+  function CinematicCamera() {
+    const idleTimeRef = useRef(0);
+    const cinematicPhase = useRef(0);
+
+    useFrame((state, delta) => {
+      const now = Date.now();
+      const idleMs = now - lastMouseMove.current;
+
+      // Enter idle mode after 10 seconds of no mouse movement
+      if (idleMs > 10000) {
+        if (!isIdleRef.current) {
+          isIdleRef.current = true;
+          idleTimeRef.current = state.clock.elapsedTime;
+        }
+
+        // Cinematic orbital flythrough
+        const t = state.clock.elapsedTime - idleTimeRef.current;
+        cinematicPhase.current += delta * 0.3;
+
+        // Smooth orbital path
+        const orbitRadius = 12;
+        const targetX = Math.sin(cinematicPhase.current * 0.4) * orbitRadius * 0.3;
+        const targetY = Math.cos(cinematicPhase.current * 0.3) * 3 + Math.sin(t * 0.2) * 2;
+        const targetZ = 10 + Math.sin(cinematicPhase.current * 0.2) * 3;
+
+        // Smooth lerp to cinematic position
+        state.camera.position.x += (targetX - state.camera.position.x) * delta * 0.8;
+        state.camera.position.y += (targetY - state.camera.position.y) * delta * 0.8;
+        state.camera.position.z += (targetZ - state.camera.position.z) * delta * 0.5;
+
+        // Focus on wandering point of interest
+        const lookX = Math.sin(t * 0.15) * 4;
+        const lookY = Math.cos(t * 0.12) * 3;
+        state.camera.lookAt(lookX, lookY, -2);
+      } else {
+        // Normal parallax mode — smoothly return from cinematic
+        const m = mouse3D.current;
+        const normalX = m.x * 0.1;
+        const normalY = m.y * 0.1;
+        const normalZ = 10;
+
+        state.camera.position.x += (normalX - state.camera.position.x) * 0.02;
+        state.camera.position.y += (normalY - state.camera.position.y) * 0.02;
+        state.camera.position.z += (normalZ - state.camera.position.z) * 0.05;
+        state.camera.lookAt(0, 0, 0);
+      }
     });
     return null;
   }
@@ -437,7 +490,7 @@ export function Background3D() {
 
           {shapes.map((s, i) => <Shape key={i} shape={s} mouse3D={mouse3D} reducedMotion={reducedMotion} />)}
           <NeuralLines count={45} maxDistance={3.2} mouse3D={mouse3D} />
-          <CameraParallax />
+          <CinematicCamera />
         </Canvas>
       </Suspense>
     </div>
