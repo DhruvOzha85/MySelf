@@ -16,7 +16,7 @@ export function Footer() {
   };
 
   return (
-    <footer className="py-12 border-t border-border">
+    <footer className="py-6 border-t border-border">
       <div className="container mx-auto px-4">
         {/* <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="flex items-center gap-4">
@@ -51,7 +51,7 @@ export function Footer() {
           </motion.div>
         </div> */}
 
-        <div className="text-center mt-8 pt-8 border-t border-border/50">
+        <div className="text-center">
           <p className="text-muted-foreground text-sm">
             © {new Date().getFullYear()} Dhruv Ozha. All rights reserved.
           </p>

@@ -14,24 +14,10 @@ export function ProjectsSection() {
     projects.find(p => p.id === 1)!, // Web Clone
   ];
 
-  const [focusedId, setFocusedId] = useState<number | null>(null);
-
   return (
     <section id="projects" className="section-padding bg-secondary/10 relative">
-      {/* Editorial Focus Mode Overlay */}
-      <AnimatePresence>
-        {focusedId !== null && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.5, ease: "easeInOut" }}
-            className="fixed inset-0 bg-black/80 backdrop-blur-sm z-[40] pointer-events-none"
-          />
-        )}
-      </AnimatePresence>
 
-      <div className="container mx-auto px-4 relative z-[50]">
+      <div className="container mx-auto px-4 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -59,14 +45,10 @@ export function ProjectsSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.5, delay: index * 0.15 }}
-                className={`col-span-1 transition-all duration-500 ease-out relative ${isFeatured ? "md:col-span-2 lg:col-span-12" : "lg:col-span-6"} ${
-                  focusedId === project.id ? "z-[60] scale-[1.02]" : "z-10"
-                }`}
+                className={`col-span-1 transition-all duration-500 ease-out relative ${isFeatured ? "md:col-span-2 lg:col-span-12" : "lg:col-span-6"} z-10 hover:z-[40]`}
               >
                 <HolographicCard 
                   className="h-full"
-                  onFocusStart={() => setFocusedId(project.id)}
-                  onFocusEnd={() => setFocusedId(null)}
                 >
                   <div className={`group h-full bg-card rounded-3xl border overflow-hidden shadow-sm hover:shadow-2xl hover:shadow-primary/20 transition-colors flex ${
                     isFeatured 

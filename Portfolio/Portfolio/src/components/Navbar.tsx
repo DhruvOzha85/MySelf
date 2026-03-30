@@ -12,7 +12,7 @@ import { useQuantumTransition } from "@/hooks/useQuantumTransition";
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const activeSection = useActiveSection();
+  const { activeSection, setActiveSection } = useActiveSection();
   const { playClick } = useSound();
   const { toggleArcade } = useArcadeMode();
   const { warpTo } = useQuantumTransition();
@@ -21,8 +21,12 @@ export function Navbar() {
     playClick();
     setIsOpen(false);
     
-    if (activeSection === href.slice(1)) return;
-
+    const targetSection = href.slice(1);
+    
+    if (activeSection === targetSection) return;
+    
+    // Instantly update the UI so it doesn't wait for scroll to finish
+    setActiveSection(targetSection);
     warpTo(href);
   };
 

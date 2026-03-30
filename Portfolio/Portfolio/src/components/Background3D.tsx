@@ -26,6 +26,7 @@ interface ShapeData {
   driftAmplitude: number;
   driftFrequency: number;
   driftOffset: number;
+  baseOpacity?: number;
 }
 
 // --- Wandering Shape: each shape drifts freely + reacts to cursor ---
@@ -122,8 +123,9 @@ function WanderingShape({
 
     // Update material opacity based on cursor glow
     const mat = mesh.material as THREE.MeshPhysicalMaterial;
+    const baseOp = shape.baseOpacity ?? 0.65;
     mat.emissiveIntensity = 0.1 + glowIntensity.current * 2;
-    mat.opacity = 0.65 + glowIntensity.current * 0.35;
+    mat.opacity = baseOp > 0 ? baseOp + glowIntensity.current * 0.35 : 0;
 
     // Scale pulse near cursor
     const targetScale = shape.scale * (1 + glowIntensity.current * 0.25);
@@ -313,9 +315,16 @@ export function Background3D() {
   const reducedMotion = useReducedMotion();
   const mouse3D = useRef(new THREE.Vector3(0, 0, 5));
   const [colors, setColors] = useState(() => getThemeColors());
+  const [themeName, setThemeName] = useState(() => {
+    if (typeof window !== 'undefined') return document.documentElement.getAttribute('data-theme') || 'light';
+    return 'light';
+  });
 
   useEffect(() => {
-    const observer = new MutationObserver(() => setColors(getThemeColors()));
+    const observer = new MutationObserver(() => {
+      setColors(getThemeColors());
+      setThemeName(document.documentElement.getAttribute('data-theme') || 'light');
+    });
     observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
     return () => observer.disconnect();
   }, []);
@@ -346,13 +355,28 @@ export function Background3D() {
 
   const shapes = useMemo(() => {
     const arr: ShapeData[] = [];
-    const numShapes = 14; 
-
-    const geometries = [
-      new THREE.TetrahedronGeometry(1.2),
-      new THREE.CylinderGeometry(0.5, 0.5, 1.5, 6),
-      new THREE.OctahedronGeometry(1.3),
-    ];
+    let numShapes = 14; 
+    let geometries: THREE.BufferGeometry[] = [];
+    
+    // --- The Multiverse Engine Geometry Selection ---
+    if (themeName === 'monochrome') {
+       // Retro Universe: Pure wireframes
+       geometries = [new THREE.IcosahedronGeometry(1.5, 0), new THREE.OctahedronGeometry(1.5)];
+    } else if (themeName === 'candy' || themeName === 'sakura') {
+       // Soft Universe: Smooth spheres and toruses
+       geometries = [new THREE.SphereGeometry(1.2, 32, 32), new THREE.TorusGeometry(1, 0.4, 16, 32)];
+    } else if (themeName === 'light' || themeName === 'forest') {
+       // Zen Universe: Micro particles, many more of them
+       numShapes = 40;
+       geometries = [new THREE.IcosahedronGeometry(0.3, 0)];
+    } else {
+       // Cyber Universe (Default): Sharp high-tech shapes
+       geometries = [
+         new THREE.TetrahedronGeometry(1.2),
+         new THREE.CylinderGeometry(0.5, 0.5, 1.5, 6),
+         new THREE.OctahedronGeometry(1.3),
+       ];
+    }
 
     const themeColors = [colors.primary, colors.secondary];
 
@@ -361,21 +385,38 @@ export function Background3D() {
       const y = (Math.random() - 0.5) * 16;
       const z = (Math.random() - 0.5) * 8 - 4;
 
+      let hasWireframe = Math.random() > 0.5;
+      let scale = Math.random() * 0.5 + 0.3;
+      let baseOpacity = 0.65;
+      
+      if (themeName === 'monochrome') {
+           hasWireframe = true;
+           baseOpacity = 0; // Invisible inner mesh, only wireframe
+      } else if (themeName === 'light' || themeName === 'forest') {
+           hasWireframe = false;
+           scale = Math.random() * 0.2 + 0.1; // tiny
+           baseOpacity = 0.4;
+      } else if (themeName === 'candy' || themeName === 'sakura') {
+           hasWireframe = false;
+           baseOpacity = 0.9;
+      }
+
       arr.push({
         geom: geometries[Math.floor(Math.random() * geometries.length)],
         basePos: new THREE.Vector3(x, y, z),
         velocity: new THREE.Vector3((Math.random()-0.5)*0.3, (Math.random()-0.5)*0.3, (Math.random()-0.5)*0.1),
         rotSpeed: new THREE.Vector3((Math.random()-0.5)*0.4, (Math.random()-0.5)*0.4, (Math.random()-0.5)*0.2),
         color: themeColors[Math.floor(Math.random() * themeColors.length)],
-        scale: Math.random() * 0.5 + 0.3,
-        hasWireframe: Math.random() > 0.5,
+        scale,
+        hasWireframe,
+        baseOpacity,
         driftAmplitude: Math.random() * 1.2 + 0.5,
         driftFrequency: Math.random() * 0.2 + 0.1,
         driftOffset: Math.random() * Math.PI * 2,
       });
     }
     return arr;
-  }, [colors]);
+  }, [colors, themeName]);
 
   function CinematicCamera() {
     const idleTimeRef = useRef(0);

@@ -6,15 +6,22 @@ export function useActiveSection() {
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
+        // Find the visible section with highest intersection ratio
+        let maxRatio = 0;
+        let selectedId = "";
+        
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
+          if (entry.isIntersecting && entry.intersectionRatio > maxRatio) {
+            maxRatio = entry.intersectionRatio;
+            selectedId = entry.target.id;
           }
         });
+
+        if (selectedId) setActiveSection(selectedId);
       },
       {
-        threshold: 0.3,
-        rootMargin: "-80px 0px -50% 0px",
+        threshold: [0.1, 0.3, 0.5, 0.7, 0.9], // Much more sensitive tracking
+        rootMargin: "-10% 0px -10% 0px", // More forgiving boundaries
       }
     );
 
@@ -26,5 +33,5 @@ export function useActiveSection() {
     };
   }, []);
 
-  return activeSection;
+  return { activeSection, setActiveSection };
 }

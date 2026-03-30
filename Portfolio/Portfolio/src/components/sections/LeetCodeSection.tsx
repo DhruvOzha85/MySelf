@@ -95,18 +95,33 @@ export function LeetCodeSection() {
          const username = leetcodeUrl.split('/u/')[1]?.replace('/', '') || 'DhruvOzha';
          
          try {
-           const { data, error: fnError } = await supabase.functions.invoke('leetcode-stats', {
-             body: { username }
-           });
+           const response = await fetch(`https://leetcode-stats-api.herokuapp.com/${username}`);
+           if (!response.ok) throw new Error(`API failed with status ${response.status}`);
            
-           if (fnError) throw fnError;
-           if (data.error) throw new Error(data.error);
-           setStats(data);
+           const rawData = await response.json();
+           if (rawData.status !== "success") throw new Error("API returned failure status");
+           
+           // Map to match our interface
+           const mappedStats: LeetCodeStats = {
+             username: username,
+             totalSolved: rawData.totalSolved || 0,
+             easySolved: rawData.easySolved || 0,
+             mediumSolved: rawData.mediumSolved || 0,
+             hardSolved: rawData.hardSolved || 0,
+             totalQuestions: rawData.totalQuestions || 3300,
+             easyTotal: rawData.totalEasy || 820,
+             mediumTotal: rawData.totalMedium || 1720,
+             hardTotal: rawData.totalHard || 760,
+             ranking: rawData.ranking || 0,
+             submissionCalendar: rawData.submissionCalendar || {}
+           };
+           
+           setStats(mappedStats);
          } catch (apiErr) {
            console.warn('Live LeetCode stats failed, using fallback mock data:', apiErr);
-           // Fallback mock data for a polished experience even if the Edge function is down
+           // Fallback mock data for a polished experience even if the public proxy is down
            setStats({
-             username: "DhruvOzha",
+             username: username,
              totalSolved: 145,
              totalQuestions: 3300,
              easySolved: 82,
