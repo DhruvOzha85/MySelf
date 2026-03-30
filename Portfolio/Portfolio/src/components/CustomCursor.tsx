@@ -17,6 +17,21 @@ export function CustomCursor() {
     document.body.classList.add("custom-cursor-active");
 
     const moveCursor = (e: MouseEvent) => {
+      const isOnScrollbar = e.clientX >= document.documentElement.clientWidth;
+
+      if (isOnScrollbar) {
+        if (document.body.classList.contains("custom-cursor-active")) {
+          document.body.classList.remove("custom-cursor-active");
+          gsap.to([dot, ring], { opacity: 0, duration: 0.1 });
+        }
+      } else {
+        if (!document.body.classList.contains("custom-cursor-active")) {
+          document.body.classList.add("custom-cursor-active");
+          gsap.to(dot, { opacity: 1, duration: 0.1 });
+          gsap.to(ring, { opacity: 1, duration: 0.1 });
+        }
+      }
+
       gsap.to(dot, {
         x: e.clientX,
         y: e.clientY,

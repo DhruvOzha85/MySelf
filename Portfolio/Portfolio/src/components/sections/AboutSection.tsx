@@ -29,19 +29,19 @@ export function AboutSection() {
         >
           <div className="space-y-6">
             <p className="text-muted-foreground leading-relaxed text-lg">
-              I'm Dhruv Ozha, an aspiring software developer with a deep curiosity for how
-              things work on the web. I enjoy crafting clean, responsive, and user-friendly
-              applications that solve real-world problems and leave a lasting impression.
+              I'm <strong className="text-foreground font-semibold">Dhruv Ozha</strong>, an <strong className="text-foreground font-semibold">aspiring software developer</strong> with a deep curiosity for how
+              things work on the web. I enjoy crafting <strong className="text-foreground font-semibold">clean, responsive, and user-friendly
+              applications</strong> that solve real-world problems and leave a lasting impression.
             </p>
             <p className="text-muted-foreground leading-relaxed text-lg">
-              My core expertise lies in frontend development with React, JavaScript, and
-              modern CSS — complemented by a growing understanding of backend technologies
-              and database design. I'm also actively sharpening my problem-solving skills
+              My core expertise lies in <strong className="text-foreground font-semibold">frontend development with React, JavaScript, and
+              modern CSS</strong> — complemented by a growing understanding of <strong className="text-foreground font-semibold">backend technologies
+              and database design</strong>. I'm also actively sharpening my problem-solving skills
               through consistent practice on platforms like LeetCode.
             </p>
             <p className="text-muted-foreground leading-relaxed text-lg">
-              I believe great software is built at the intersection of clean code and
-              thoughtful design. My goal is to keep learning, contribute to meaningful
+              I believe great software is built at the intersection of <strong className="text-foreground font-semibold">clean code</strong> and
+              <strong className="text-foreground font-semibold"> thoughtful design</strong>. My goal is to keep learning, contribute to meaningful
               projects, and grow into a well-rounded engineer who builds products that
               people genuinely enjoy using.
             </p>

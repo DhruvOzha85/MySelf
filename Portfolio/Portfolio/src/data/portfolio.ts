@@ -16,6 +16,7 @@ export const socialLinks = {
   youtube: "https://www.youtube.com/@DhruvOzha",
   leetcode: "https://leetcode.com/u/DhruvOzha/",
   email: "ozhadhruv@gmail.com",
+  twitter: "https://x.com/dhruvozha85",
 };
 
 export const skillCategories: SkillCategory[] = [
@@ -159,6 +160,5 @@ export const navItems = [
   { label: "Skills", href: "#skills" },
   { label: "Projects", href: "#projects" },
   { label: "Certificates", href: "#certificates" },
-  { label: "LeetCode", href: "#leetcode" },
   { label: "Contact", href: "#contact" },
 ];

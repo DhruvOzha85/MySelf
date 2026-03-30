@@ -7,10 +7,12 @@ import { socialLinks } from "@/data/portfolio";
 import { useState, useRef } from "react";
 import { toast } from "sonner";
 import emailjs from '@emailjs/browser';
+import { XLogo } from "@/components/ui/XLogo";
 
 const socialIcons = [
   { icon: Github, href: socialLinks.github, label: "GitHub" },
   { icon: Linkedin, href: socialLinks.linkedin, label: "LinkedIn" },
+  { icon: XLogo, href: socialLinks.twitter, label: "X (Twitter)" },
   { icon: Instagram, href: socialLinks.instagram, label: "Instagram" },
   { icon: Youtube, href: socialLinks.youtube, label: "YouTube" },
 ];
