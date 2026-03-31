@@ -25,6 +25,51 @@ export function HeroSection() {
   const [loopNum, setLoopNum] = useState(0);
   const [typingSpeed, setTypingSpeed] = useState(150);
 
+  // Hacker Glitch Effect State
+  const finalName = "Dhruv Ozha";
+  const [hackerName, setHackerName] = useState(finalName);
+
+  const triggerGlitch = () => {
+    let iteration = 0;
+    const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!<>_~*^$#@";
+    
+    const interval = setInterval(() => {
+      setHackerName(
+        finalName
+          .split("")
+          .map((letter, index) => {
+            if (index < iteration) return finalName[index];
+            if (letter === " ") return " ";
+            return letters[Math.floor(Math.random() * letters.length)];
+          })
+          .join("")
+      );
+
+      if (iteration >= finalName.length) {
+        clearInterval(interval);
+        setHackerName(finalName); // Fallback lock
+      }
+      
+      iteration += 1 / 3; // Decode speed
+    }, 45);
+
+    // Return the interval ID so it can be cleared on unmount if needed
+    return interval;
+  };
+
+  useEffect(() => {
+    // Wait for the full 900ms entrance fade to finish before glitching
+    let intervalId: NodeJS.Timeout;
+    const timeout = setTimeout(() => {
+      intervalId = triggerGlitch();
+    }, 1200);
+
+    return () => {
+      clearTimeout(timeout);
+      if (intervalId) clearInterval(intervalId);
+    };
+  }, []);
+
   const toRotate = [
     "Aspiring Software Developer",
     "Full Stack Web Developer",
@@ -94,9 +139,14 @@ export function HeroSection() {
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.3, duration: 0.6 }}
-              className="text-5xl md:text-7xl lg:text-8xl font-display font-bold"
+              className="text-5xl md:text-7xl lg:text-8xl font-display font-bold relative"
             >
-              <span className="gradient-text">Dhruv Ozha</span>
+              <span 
+                className="gradient-text tabular-nums tracking-tight cursor-default"
+                onMouseEnter={triggerGlitch}
+              >
+                {hackerName}
+              </span>
             </motion.h1>
 
             <motion.h2
