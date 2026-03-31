@@ -4,7 +4,7 @@ import { Github, Linkedin, Instagram, Youtube, Twitter, ArrowDown } from "lucide
 import { Button } from "@/components/ui/button";
 import { socialLinks } from "@/data/portfolio";
 import { useSound } from "@/hooks/useSound";
-import profilePhoto from "@/assets/profile-photo.jpg";
+import profilePhoto from "@/assets/D11.png";
 import { MagneticWrapper } from "@/components/MagneticWrapper";
 import { useQuantumTransition } from "@/hooks/useQuantumTransition";
 import { XLogo } from "@/components/ui/XLogo";
@@ -32,7 +32,7 @@ export function HeroSection() {
   const triggerGlitch = () => {
     let iteration = 0;
     const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!<>_~*^$#@";
-    
+
     const interval = setInterval(() => {
       setHackerName(
         finalName
@@ -49,7 +49,7 @@ export function HeroSection() {
         clearInterval(interval);
         setHackerName(finalName); // Fallback lock
       }
-      
+
       iteration += 1 / 3; // Decode speed
     }, 45);
 
@@ -141,7 +141,7 @@ export function HeroSection() {
               transition={{ delay: 0.3, duration: 0.6 }}
               className="text-5xl md:text-7xl lg:text-8xl font-display font-bold relative"
             >
-              <span 
+              <span
                 className="gradient-text tabular-nums tracking-tight cursor-default"
                 onMouseEnter={triggerGlitch}
               >
@@ -178,10 +178,10 @@ export function HeroSection() {
               <div className="flex flex-wrap items-center justify-center md:justify-start gap-4 pt-4">
                 <MagneticWrapper strength={0.45} maxDistance={130}>
                   <Button
-                     size="lg"
-                     variant="ghost"
-                     className="text-primary hover:text-primary-foreground transition-all duration-300 border-2 border-dashed border-primary/50 hover:border-primary hover:bg-primary/90 px-8 disabled:opacity-50 disabled:pointer-events-none ring-offset-background"
-                     onClick={() => window.open("https://dhruvozha-resume.vercel.app/", "_blank")}
+                    size="lg"
+                    variant="ghost"
+                    className="text-primary hover:text-primary-foreground transition-all duration-300 border-2 border-dashed border-primary/50 hover:border-primary hover:bg-primary/90 px-8 disabled:opacity-50 disabled:pointer-events-none ring-offset-background"
+                    onClick={() => window.open("https://dhruvozha-resume.vercel.app/", "_blank")}
                   >
                     View Resume
                   </Button>
