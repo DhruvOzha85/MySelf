@@ -106,6 +106,14 @@ export const certificates = [
   },
   {
     id: 2,
+    title: "ArtPark_CodeForge_Hackathon",
+    issuer: "Indian Institute of Science (IISc), Bangalore",
+    description: "Participation in the Prototype Development Round of the ArtPark CodeForge Hackathon.",
+    date: "1 April, 2026",
+    url: "https://res.cloudinary.com/dyahoqmz5/image/upload/v1775024770/ArtPark_CodeForge_Hackathon_jxzl0t.png",
+  },
+  {
+    id: 3,
     title: "Solution Architecture Job Simulation",
     issuer: "aws-Forage",
     description: "Cloud architecture and design principles for scalable applications.",
@@ -113,7 +121,7 @@ export const certificates = [
     url: "https://res.cloudinary.com/dd80on9gu/image/upload/v1770378457/aws_b0q1nf.png",
   },
   {
-    id: 3,
+    id: 4,
     title: "be10X - AI Tools Workshop Bootcamp",
     issuer: "be10X",
     description: "Hands-on experience with popular AI tools and their applications in software development.",
@@ -121,7 +129,7 @@ export const certificates = [
     url: "https://res.cloudinary.com/dd80on9gu/image/upload/v1770378458/be10X_m0i8ux.png",
   },
   {
-    id: 4,
+    id: 5,
     title: "Front-End Software Engineering Job Simulation",
     issuer: "Skyscanner-Forage",
     description: "Building responsive user interfaces and implementing frontend best practices.",
@@ -129,7 +137,7 @@ export const certificates = [
     url: "https://res.cloudinary.com/dd80on9gu/image/upload/v1770378457/Skyscanner_lwosws.png",
   },
   {
-    id: 5,
+    id: 6,
     title: "Advanced Software Engineering Job Simulation",
     issuer: "Walmart-Forage",
     description: "Advanced software development concepts, including design patterns and system architecture.",
@@ -137,7 +145,7 @@ export const certificates = [
     url: "https://res.cloudinary.com/dd80on9gu/image/upload/v1770378457/Walmart_i1wslf.png",
   },
   {
-    id: 6,
+    id: 7,
     title: "Software Engineering Job Simulation",
     issuer: "Wells Fargo-Forage",
     description: "Comprehensive software engineering principles, including coding, testing, and deployment.",
@@ -145,7 +153,7 @@ export const certificates = [
     url: "https://res.cloudinary.com/dd80on9gu/image/upload/v1770378457/Wells_Fargo_kctplx.png",
   },
   {
-    id: 7,
+    id: 8,
     title: "Comming Soon",
     issuer: "Comming Soon",
     description: "Stay tuned for upcoming certifications that will enhance my skills and knowledge.",
