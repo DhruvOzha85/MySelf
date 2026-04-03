@@ -34,6 +34,8 @@
             background: #fff;
             padding: 0;
             overflow: hidden;
+            display: flex;
+            flex-direction: column;
         }
 
         /* Top gray bar */
@@ -45,19 +47,19 @@
 
         /* Header */
         .header {
-            padding: 24px 45px 14px 45px;
+            padding: 28px 50px 18px 50px;
         }
 
         .header h1 {
-            font-size: 30px;
+            font-size: 36px;
             font-weight: 800;
             color: #000000;
             letter-spacing: -0.5px;
-            margin-bottom: 3px;
+            margin-bottom: 6px;
         }
 
         .header .title {
-            font-size: 15px;
+            font-size: 18px;
             font-weight: 600;
             color: #000000;
             letter-spacing: 0.3px;
@@ -65,7 +67,7 @@
 
         /* Divider */
         .header-divider {
-            width: calc(100% - 90px);
+            width: calc(100% - 100px);
             margin: 0 auto;
             border: none;
             border-top: 1.5px solid #d9d9d9;
@@ -74,14 +76,15 @@
         /* Main content */
         .main-content {
             display: flex;
-            padding: 16px 45px 20px 45px;
-            gap: 30px;
+            padding: 22px 50px 30px 50px;
+            gap: 35px;
+            flex-grow: 1;
         }
 
         /* Left column */
         .left-column {
             width: 38%;
-            min-width: 200px;
+            min-width: 210px;
         }
 
         /* Right column */
@@ -92,31 +95,31 @@
 
         /* Section title */
         .section-title {
-            font-size: 12px;
+            font-size: 14px;
             font-weight: 800;
             letter-spacing: 1.5px;
             color: #000000;
             text-transform: uppercase;
             border-bottom: 1.5px solid #d9d9d9;
-            padding-bottom: 5px;
-            margin-bottom: 10px;
+            padding-bottom: 6px;
+            margin-bottom: 14px;
         }
 
         /* Contact section */
         .contact-item {
             display: flex;
             align-items: flex-start;
-            gap: 9px;
-            margin-bottom: 7px;
-            font-size: 11px;
+            gap: 10px;
+            margin-bottom: 10px;
+            font-size: 12px;
             color: #000000;
-            line-height: 1.35;
+            line-height: 1.45;
         }
 
         .contact-item svg {
             flex-shrink: 0;
-            width: 15px;
-            height: 15px;
+            width: 16px;
+            height: 16px;
             margin-top: 1px;
         }
 
@@ -132,48 +135,48 @@
 
         /* Skills section */
         .skills-section {
-            margin-top: 18px;
+            margin-top: 24px;
         }
 
         .skill-category {
-            margin-bottom: 6px;
+            margin-bottom: 10px;
         }
 
         .skill-category .label {
-            font-size: 11px;
+            font-size: 12px;
             font-weight: 700;
             color: #000000;
-            margin-bottom: 1px;
+            margin-bottom: 2px;
         }
 
         .skill-category .value {
-            font-size: 11px;
+            font-size: 12px;
             color: #000000;
-            line-height: 1.35;
+            line-height: 1.45;
         }
 
         /* Tools section */
         .tools-section {
-            margin-top: 18px;
+            margin-top: 24px;
         }
 
         .tools-value {
-            font-size: 11px;
+            font-size: 12px;
             color: #000000;
-            line-height: 1.35;
+            line-height: 1.45;
         }
 
         /* Learning section */
         .learning-section {
-            margin-top: 18px;
+            margin-top: 24px;
         }
 
         .learning-item {
             display: flex;
             align-items: center;
-            gap: 7px;
-            margin-bottom: 5px;
-            font-size: 11px;
+            gap: 8px;
+            margin-bottom: 8px;
+            font-size: 12px;
             color: #000000;
         }
 
@@ -184,30 +187,30 @@
 
         /* Professional Summary */
         .summary-text {
-            font-size: 11px;
+            font-size: 12.5px;
             color: #000000;
-            line-height: 1.55;
+            line-height: 1.6;
             text-align: justify;
         }
 
         /* Projects section */
         .projects-section {
-            margin-top: 16px;
+            margin-top: 22px;
         }
 
         .project {
-            margin-bottom: 14px;
+            margin-bottom: 18px;
         }
 
         .project-header {
             display: flex;
             align-items: center;
-            gap: 10px;
-            margin-bottom: 7px;
+            gap: 12px;
+            margin-bottom: 8px;
         }
 
         .project-name {
-            font-size: 14px;
+            font-size: 16px;
             font-weight: 700;
             color: #000000;
         }
@@ -215,13 +218,13 @@
         .view-repo {
             display: inline-flex;
             align-items: center;
-            gap: 4px;
-            font-size: 10px;
+            gap: 5px;
+            font-size: 11px;
             color: #000000;
             border: 1.5px solid #cccccc;
             background: #f9f9f9;
             border-radius: 4px;
-            padding: 2px 8px;
+            padding: 3px 9px;
             text-decoration: none;
             font-weight: 600;
         }
@@ -237,10 +240,10 @@
         }
 
         .project-bullets li {
-            font-size: 10.5px;
+            font-size: 12px;
             color: #000000;
-            line-height: 1.5;
-            margin-bottom: 5px;
+            line-height: 1.55;
+            margin-bottom: 6px;
         }
 
         .project-bullets li strong {
@@ -251,9 +254,14 @@
             font-weight: 700;
         }
 
+        /* Certifications Section */
+        .certifications-section {
+            margin-top: 22px;
+        }
+
         /* Education section */
         .education-section {
-            margin-top: 16px;
+            margin-top: 22px;
         }
 
         .education-row {
@@ -263,40 +271,40 @@
         }
 
         .education-degree {
-            font-size: 13px;
+            font-size: 15px;
             font-weight: 700;
             color: #000000;
         }
 
         .education-year {
-            font-size: 11px;
+            font-size: 12px;
             color: #000000;
             font-weight: 500;
         }
 
         .education-university {
-            font-size: 11px;
+            font-size: 12.5px;
             color: #000000;
-            margin-top: 2px;
+            margin-top: 4px;
         }
 
         /* Profiles section in left column */
         .profiles-section {
-            margin-top: 18px;
+            margin-top: 24px;
         }
 
         .profile-item {
             display: flex;
             align-items: center;
-            gap: 9px;
-            margin-bottom: 6px;
-            font-size: 11px;
+            gap: 10px;
+            margin-bottom: 8px;
+            font-size: 12px;
         }
 
         .profile-item svg {
             flex-shrink: 0;
-            width: 15px;
-            height: 15px;
+            width: 16px;
+            height: 16px;
         }
 
         .profile-item a {
@@ -421,30 +429,30 @@
                     <div class="section-title">TECHNICAL SKILLS</div>
 
                     <div class="skill-category">
-                        <div class="label">Languages</div>
-                        <div class="value">JavaScript, C, C++</div>
+                        <div class="label">Programming Languages</div>
+                        <div class="value">JavaScript, TypeScript, C, C++</div>
                     </div>
 
                     <div class="skill-category">
-                        <div class="label">Frontend</div>
-                        <div class="value">HTML, CSS, React, Tailwind CSS</div>
+                        <div class="label">Frontend & Libraries</div>
+                        <div class="value">HTML, CSS, React, Tailwind CSS, Three.js, GSAP</div>
                     </div>
 
                     <div class="skill-category">
-                        <div class="label">Backend</div>
+                        <div class="label">Backend Development</div>
                         <div class="value">Node.js, Express.js, REST APIs</div>
                     </div>
 
                     <div class="skill-category">
-                        <div class="label">Database</div>
-                        <div class="value">MongoDB</div>
+                        <div class="label">Databases</div>
+                        <div class="value">MongoDB, Basics of SQL</div>
                     </div>
                 </div>
 
                 <!-- Tools -->
                 <div class="tools-section">
-                    <div class="section-title">TOOLS</div>
-                    <div class="tools-value">Git, GitHub, Postman, VS Code, Vercel, Render</div>
+                    <div class="section-title">TOOLS & TECHNOLOGIES</div>
+                    <div class="tools-value">Git, GitHub, Postman, VS Code, Vercel, Render, NPM, Webpack</div>
                 </div>
 
                 <!-- Learning & Interests -->
@@ -452,16 +460,19 @@
                     <div class="section-title">LEARNING & INTERESTS</div>
 
                     <div class="learning-item">
-                        <span class="arrow">▶</span> MERN Stack Development
+                        <span class="arrow">▶</span> Full-stack Web Architecture
+                    </div>
+                    <div class="learning-item">
+                        <span class="arrow">▶</span> 3D Web Experiences (WebGL)
                     </div>
                     <div class="learning-item">
                         <span class="arrow">▶</span> Data Structures & Algorithms
                     </div>
                     <div class="learning-item">
-                        <span class="arrow">▶</span> Building real-world apps
+                        <span class="arrow">▶</span> Systems Integration
                     </div>
                     <div class="learning-item">
-                        <span class="arrow">▶</span> Modern web technologies
+                        <span class="arrow">▶</span> UI/UX Interactive Design
                     </div>
                 </div>
             </div>
@@ -471,11 +482,7 @@
                 <!-- Professional Summary -->
                 <div class="section-title">PROFESSIONAL SUMMARY</div>
                 <p class="summary-text">
-                    Results-driven Software Engineering student with a strong foundation in full-stack web development
-                    and object-oriented programming. Proficient in the MERN stack and C++, with demonstrated experience
-                    building optimized, scalable web applications and developing robust RESTful APIs. Adept at algorithm
-                    design and modern web implementation, seeking a software engineering internship to contribute to
-                    impactful technical solutions within a fast-paced engineering team.
+                    Results-driven Software Engineering student with a robust foundation in full-stack web development and object-oriented programming. Proficient in the MERN stack (MongoDB, Express, React, Node.js) and C++, with demonstrated experience building optimized, scalable web applications and developing robust RESTful APIs. Adept at algorithm design, modern web implementation, and creating highly interactive, accessible user interfaces using tools like Three.js and JS animation libraries. Proven ability to innovate and deliver in fast-paced software environments through consistent hackathon participation and advanced personal projects. Actively seeking a software engineering role to contribute technical excellence to an impactful engineering team.
                 </p>
 
                 <!-- Projects -->
@@ -502,13 +509,9 @@
                             </a>
                         </div>
                         <ul class="project-bullets">
-                            <li><strong>System Architecture:</strong> Designed and built a full-stack clone website to
-                                replicate and learn real-world UI/UX patterns and responsive design principles.</li>
-                            <li><strong>Frontend Development:</strong> Implemented pixel-perfect, responsive layouts
-                                using <span class="bold-tech">React</span> and <span class="bold-tech">Tailwind
-                                    CSS</span> with modern component architecture.</li>
-                            <li><strong>Deployment:</strong> Deployed live on <span class="bold-tech">Vercel</span> with
-                                continuous integration for seamless updates and production-ready performance.</li>
+                            <li><strong>System Architecture:</strong> Engineered a comprehensive full-stack clone to replicate complex real-world UI/UX patterns and highly responsive web design paradigms from scratch.</li>
+                            <li><strong>Frontend Development:</strong> Achieved pixel-perfect alignment using <span class="bold-tech">React</span> and <span class="bold-tech">Tailwind CSS</span> within a modern, highly reusable component-based architecture.</li>
+                            <li><strong>Deployment pipeline:</strong> Executed live deployment scaling via <span class="bold-tech">Vercel</span> configured with automated continuous integration for zero-downtime updates.</li>
                         </ul>
                     </div>
 
@@ -532,9 +535,9 @@
                             </a>
                         </div>
                         <ul class="project-bullets">
-                            <li><strong>Smart Agriculture Platform:</strong> Built a full-stack crop recommendation system that analyzes soil data, weather conditions, and regional factors to suggest optimal crops.</li>
-                            <li><strong>Tech Stack:</strong> Developed with <span class="bold-tech">React</span>, <span class="bold-tech">Node.js</span>, <span class="bold-tech">Express</span>, and <span class="bold-tech">MongoDB</span> with AI-powered analytics for data-driven farming decisions.</li>
-                            <li><strong>Deployment:</strong> Deployed on <span class="bold-tech">Vercel</span> with a responsive dashboard featuring interactive charts and real-time crop scoring.</li>
+                            <li><strong>Smart Agriculture Platform:</strong> Built a data-intensive crop recommendation system processing dynamic inputs like specific soil data, regional weather parameters, and historical metrics.</li>
+                            <li><strong>Tech Stack:</strong> Architected with <span class="bold-tech">React</span>, <span class="bold-tech">Node.js</span>, <span class="bold-tech">Express</span>, and <span class="bold-tech">MongoDB</span>, seamlessly integrating AI models to provide real-time agricultural analytics scoring.</li>
+                            <li><strong>Implementation:</strong> Successfully developed and deployed on <span class="bold-tech">Vercel</span> to deliver a dashboard with responsive, interactive visual charts.</li>
                         </ul>
                     </div>
 
@@ -558,11 +561,20 @@
                             </a>
                         </div>
                         <ul class="project-bullets">
-                            <li><strong>AI-Powered Learning:</strong> Developed an intelligent onboarding engine that generates personalized skill-gap analysis and learning roadmaps from resumes and job descriptions.</li>
-                            <li><strong>Tech Stack:</strong> Built using <span class="bold-tech">React</span>, <span class="bold-tech">Node.js</span>, <span class="bold-tech">Express</span>, and <span class="bold-tech">Gemini API</span> for AI-driven skill extraction and adaptive content recommendations.</li>
-                            <li><strong>Deployment:</strong> Deployed on <span class="bold-tech">Vercel</span> with an interactive UI featuring progress tracking and dynamic learning modules.</li>
+                            <li><strong>Intelligent Content Processing:</strong> Developed a next-generation onboarding tool leveraging LLMs to autonomously generate tailored skill-gap assessments directly from raw resumes.</li>
+                            <li><strong>Ecosystem Integration:</strong> Executed complex backend logic combining <span class="bold-tech">Node.js</span> workflows with the <span class="bold-tech">Gemini API</span> for rapid, accurate NLP extraction.</li>
+                            <li><strong>Dynamic UI:</strong> Rendered high-performance adaptive learning pathways via <span class="bold-tech">React</span> sidecar components, optimizing the final user engagement cycle.</li>
                         </ul>
                     </div>
+                </div>
+
+                <!-- Certifications & Achievements Section -->
+                <div class="certifications-section">
+                    <div class="section-title">CERTIFICATIONS & ACHIEVEMENTS</div>
+                    <ul class="project-bullets">
+                        <li><strong>Advanced Web Frameworks:</strong> Mastered implementation of Three.js and React Three Fiber to build modern, high-performance 3D spatial web environments.</li>
+                        <li><strong>Hackathon Experience:</strong> Developed scalable solutions under strict time constraints during SU Hackathon and IISc Hackathon engineering sprints.</li>
+                    </ul>
                 </div>
 
                 <!-- Education -->

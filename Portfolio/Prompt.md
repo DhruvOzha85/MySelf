@@ -932,3 +932,53 @@ Here's your detailed prompt:
 **💡 Tip:** Add `--ar 16:9` at the end for Midjourney to get a widescreen website banner ratio, or `--ar 1:1` for a square section background.
 
 Want me to also **build this directly as an animated Three.js background** for your website instead?
+
+<!--  Voice Command Prompt -->
+**Objective:**
+Upgrade the existing `VoiceAssistant.tsx` in my Vite + React (TypeScript) portfolio. I want to transform it from a basic assistant into a fully integrated, command-driven AI that can navigate the portfolio, open external links, click buttons on the UI, and fill out the "Contact Me" form using voice dictation.
+
+**Core Requirements:**
+
+We will use the native Web Speech API (`window.SpeechRecognition` or `window.webkitSpeechRecognition`) for speech-to-text, and `window.speechSynthesis` for text-to-speech to acknowledge commands.
+
+Please implement the following 3 major feature sets:
+
+### 1. External Link Navigation
+The assistant must listen for intent keywords like "open", "go to", or "visit", and map them to my external profiles.
+*   **Commands:** "Open GitHub", "Visit my LinkedIn", "Go to YouTube", "Open Twitter", "Show me LeetCode", "Open Instagram".
+*   **Action:** Acknowledge the command vocally (e.g., "Opening your GitHub profile") and use `window.open(url, '_blank')` to open the corresponding link in a new tab.
+*   **Mapping:** 
+    * GitHub: `https://github.com/DhruvOzha85`
+    * LinkedIn: `https://www.linkedin.com/in/dhruv-ozha-bb378639b/`
+    * YouTube: `https://www.youtube.com/@DhruvOzha`
+    * LeetCode: `https://leetcode.com/u/DhruvOzha/`
+    * Twitter/X: `https://x.com/dhruvozha85`
+    * Instagram: `https://www.instagram.com/dhruv.ozha/`
+
+### 2. UI Interaction & Button Clicking
+The assistant must be able to visually "click" buttons or scroll to sections within the portfolio based on voice commands.
+*   **Commands:** "Open CropPilot demo", "View Live Project", "Go to Skills", "Show me Projects", "View Resume".
+*   **Action:** 
+    * For section scrolling commands ("Show me Projects"), use `document.getElementById('projects').scrollIntoView({ behavior: 'smooth' })`.
+    * For dynamic buttons ("Open CropPilot demo"), the assistant should scan the DOM for matching elements. Specifically, update my project cards / buttons to include a `data-voice-target` attribute (e.g., `data-voice-target="croppilot-demo"`). The assistant will do: `document.querySelector('[data-voice-target="croppilot-demo"]').click()`.
+*   **Feedback:** The speaker should say, "Opening CropPilot demo" when executed successfully.
+
+### 3. Contact Form Voice Dictation Mode
+I want to be able to dictate my messages directly into the contact form.
+*   **Trigger Commands:** "Write a message", "Fill contact form", "Start dictation".
+*   **Action:** 
+    1. The assistant responds, "I am listening. What would you like to say in the message?"
+    2. The assistant enters a specific `isDictating` state.
+    3. Any speech detected while in `isDictating` state is automatically appended to the `message` field (textarea) of the `ContactSection` form.
+    4. You should use a global state (e.g., Zustand or React Context) or dispatch a custom window event (`window.dispatchEvent(new CustomEvent('voice-dictation', { detail: transcript }))`) so the Contact form can listen and update its `react-hook-form` value or local state.
+*   **End Command:** "Stop dictation" or "End message". The assistant responds, "Dictation completed."
+
+### Technical Implementation Steps & Constraints:
+
+1. **Robust Intent Parsing:** Create a helper function `parseCommand(transcript: string)` that converts speech to lowercase and removes punctuation before matching against command maps. Use RegEx or `includes()` checks to account for variations (e.g., "open github" vs "please open github").
+2. **Audio Feedback (TTS):** Create a helper `speak(text: string)` using `speechSynthesis.speak(new SpeechSynthesisUtterance(text))` to confirm actions. Ensure it doesn't overlap with listening.
+3. **Fuzzy Matching for Projects:** If I say "open crop pilot demo" or "open croppilot demo", map both variations to the same data target.
+4. **Graceful Failures:** If a command is not understood, the assistant should say, "I didn't catch that. You can ask me to open links, view projects, or write a message."
+5. **UI Indicator:** Ensure the Voice Assistant UI component (likely a floating mic button) visually pulses or changes color to indicate when it is actively listening vs actively dictating into the form.
+
+Please provide the updated `VoiceAssistant.tsx` file incorporating this logic, along with instructions on what minor attributes need to be added to my `ContactSection` textarea and `ProjectsSection` buttons to make the connection complete.

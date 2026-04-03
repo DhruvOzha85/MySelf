@@ -46,6 +46,7 @@ export function CertificatesSection() {
                     exit={{ opacity: 0, scale: 0.9 }}
                     transition={{ duration: 0.3, delay: index * 0.1 }}
                     whileHover={{ y: -5 }}
+                    data-voice-target={`${cert.title.toLowerCase().replace(/[^a-z0-9]/g, "")}-cert`}
                     className="bg-card rounded-xl p-6 border border-border hover:border-primary/50 transition-all shadow-sm hover:shadow-lg group cursor-none h-full flex flex-col"
                   >
                     <div className="flex items-start gap-4 mb-4">

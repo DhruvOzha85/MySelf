@@ -6,6 +6,11 @@ import { projects } from "@/data/portfolio";
 import { MagneticWrapper } from "@/components/MagneticWrapper";
 import { HolographicCard } from "@/components/HolographicCard";
 
+/** Generate a voice-target slug from a project title, e.g. "CropPilot" → "croppilot" */
+function voiceSlug(title: string): string {
+  return title.toLowerCase().replace(/[^a-z0-9]/g, "");
+}
+
 export function ProjectsSection() {
   // Custom sorting to make CropPilot (ID: 2) the featured flagship project!
   const sortedProjects = [
@@ -104,7 +109,7 @@ export function ProjectsSection() {
                               className="gradient-bg rounded-lg px-6 flex-1 shadow-lg shadow-primary/20 hover:scale-[1.03] transition-transform font-semibold"
                               asChild
                             >
-                              <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
+                              <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" data-voice-target={`${voiceSlug(project.title)}-demo`}>
                                 <ExternalLink className="h-4 w-4 mr-2" />
                                 Live Demo
                               </a>
@@ -114,7 +119,7 @@ export function ProjectsSection() {
                         {project.githubUrl !== "#" && (
                           <MagneticWrapper strength={0.3} maxDistance={100}>
                             <Button variant="outline" className="flex-1 rounded-lg hover:bg-secondary hover:text-foreground hover:scale-[1.03] transition-transform text-muted-foreground font-semibold" asChild>
-                              <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
+                              <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" data-voice-target={`${voiceSlug(project.title)}-source`}>
                                 <Github className="h-4 w-4 mr-2" />
                                 Source
                               </a>

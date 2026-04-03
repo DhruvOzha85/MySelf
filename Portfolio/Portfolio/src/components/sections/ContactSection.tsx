@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { socialLinks } from "@/data/portfolio";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import { toast } from "sonner";
 import emailjs from '@emailjs/browser';
 import { XLogo } from "@/components/ui/XLogo";
@@ -19,12 +19,41 @@ const socialIcons = [
 
 export function ContactSection() {
   const form = useRef<HTMLFormElement>(null);
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     message: "",
   });
+
+  // ─── Voice Dictation Listener ─────────────────────────────────────
+  const handleVoiceDictation = useCallback((e: Event) => {
+    const customEvent = e as CustomEvent<string>;
+    const dictatedText = customEvent.detail;
+    if (!dictatedText) return;
+
+    setFormData((prev) => ({
+      ...prev,
+      message: prev.message
+        ? `${prev.message} ${dictatedText}`
+        : dictatedText,
+    }));
+
+    // Focus the textarea so the user can see the text being added
+    setTimeout(() => {
+      textareaRef.current?.focus();
+      // Scroll textarea to bottom
+      if (textareaRef.current) {
+        textareaRef.current.scrollTop = textareaRef.current.scrollHeight;
+      }
+    }, 100);
+  }, []);
+
+  useEffect(() => {
+    window.addEventListener("voice-dictation", handleVoiceDictation);
+    return () => window.removeEventListener("voice-dictation", handleVoiceDictation);
+  }, [handleVoiceDictation]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -165,6 +194,8 @@ export function ContactSection() {
               </div>
               <div>
                 <Textarea
+                  ref={textareaRef}
+                  id="contact-message"
                   placeholder="Your Message"
                   name="message"
                   value={formData.message}

@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { Mic, Navigation, Square } from "lucide-react";
+import { Mic, MicOff, Navigation, Square, PenLine } from "lucide-react";
 import { useCallback } from "react";
 import { useVoiceCommand } from "@/hooks/useVoiceCommand";
 import { useGuidedTour } from "@/hooks/useGuidedTour";
@@ -12,9 +12,70 @@ export function VoiceAssistant() {
     else stopTour();
   }, [startTour, stopTour]);
 
-  const { isListening, transcript, feedback, toggleListening } = useVoiceCommand(handleTourCommand);
+  const { isListening, isDictating, transcript, feedback, toggleListening } = useVoiceCommand(handleTourCommand);
 
   const showWidget = isListening || feedback || isTouring || tourFeedback;
+
+  // ─── Visual state determination ────────────────────────────────────
+  const pulseColor = isDictating
+    ? "#f59e0b" // amber for dictation
+    : isTouring
+    ? "#10b981" // green for tour
+    : "var(--accent-primary)"; // theme accent for listening
+
+  const glowShadow = isDictating
+    ? "0 0 30px rgba(245, 158, 11, 0.4), 0 0 60px rgba(245, 158, 11, 0.15)"
+    : isTouring
+    ? "0 0 30px rgba(16, 185, 129, 0.4)"
+    : isListening
+    ? "0 0 30px var(--accent-subtle)"
+    : "var(--shadow-xl)";
+
+  const statusLabel = isDictating
+    ? "🎤 Dictating"
+    : isTouring
+    ? `🎙️ Jarvis Tour (${currentStopIndex + 1}/${totalStops})`
+    : isListening
+    ? "Listening (Ctrl+V)"
+    : "Voice Command";
+
+  const statusLabelColor = isDictating
+    ? "#f59e0b"
+    : isTouring
+    ? "#10b981"
+    : "var(--text-muted)";
+
+  const statusContent = () => {
+    if (isTouring) {
+      return (
+        <span className="text-sm truncate" style={{ color: "var(--text-primary)" }}>
+          {tourFeedback || currentStop?.title || "Starting..."}
+        </span>
+      );
+    }
+
+    if (isDictating) {
+      return (
+        <span className="text-sm truncate" style={{ color: "#f59e0b" }}>
+          {transcript ? `"${transcript}..."` : feedback || "Speak your message..."}
+        </span>
+      );
+    }
+
+    if (transcript) {
+      return (
+        <span className="text-sm truncate" style={{ color: "var(--text-primary)" }}>
+          "{transcript}..."
+        </span>
+      );
+    }
+
+    return (
+      <span className="text-sm truncate" style={{ color: "var(--text-secondary)" }}>
+        {feedback || tourFeedback || "Idle"}
+      </span>
+    );
+  };
 
   return (
     <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-[100] pointer-events-none flex flex-col items-center gap-3">
@@ -24,10 +85,13 @@ export function VoiceAssistant() {
             initial={{ opacity: 0, scale: 0.9, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: 20 }}
-            className="pointer-events-auto flex items-center gap-4 px-6 py-3 rounded-full border border-[var(--border-color-strong)] shadow-2xl glass"
-            style={{ 
-              backgroundColor: 'var(--bg-card)', 
-              boxShadow: isListening || isTouring ? '0 0 30px var(--accent-subtle)' : 'var(--shadow-xl)'
+            className="pointer-events-auto flex items-center gap-4 px-6 py-3 rounded-full border shadow-2xl glass"
+            style={{
+              backgroundColor: "var(--bg-card)",
+              borderColor: isDictating
+                ? "rgba(245, 158, 11, 0.5)"
+                : "var(--border-color-strong)",
+              boxShadow: glowShadow,
             }}
           >
             {/* Left Icon Area */}
@@ -35,9 +99,9 @@ export function VoiceAssistant() {
               {(isListening || isTouring) && (
                 <motion.div
                   animate={{ scale: [1, 1.5, 1], opacity: [0.5, 0, 0.5] }}
-                  transition={{ repeat: Infinity, duration: 2 }}
+                  transition={{ repeat: Infinity, duration: isDictating ? 1.2 : 2 }}
                   className="absolute inset-0 rounded-full"
-                  style={{ backgroundColor: isTouring ? '#10b981' : 'var(--accent-primary)' }}
+                  style={{ backgroundColor: pulseColor }}
                 />
               )}
               <button 
@@ -46,54 +110,55 @@ export function VoiceAssistant() {
               >
                 {isTouring ? (
                   <Square className="w-4 h-4 text-red-400" />
+                ) : isDictating ? (
+                  <PenLine className="w-4 h-4" style={{ color: "#f59e0b" }} />
+                ) : isListening ? (
+                  <Mic className="w-4 h-4" style={{ color: "var(--accent-primary)" }} />
                 ) : (
-                  <Mic 
-                    className="w-4 h-4" 
-                    style={{ color: isListening ? 'var(--accent-primary)' : 'var(--text-muted)' }} 
-                  />
+                  <MicOff className="w-4 h-4" style={{ color: "var(--text-muted)" }} />
                 )}
               </button>
             </div>
 
             {/* Content Area */}
             <div className="flex flex-col max-w-[280px] min-w-[200px]">
-              {isTouring ? (
-                <>
-                  <span className="text-xs font-semibold mb-0.5 tracking-wider uppercase" style={{ color: '#10b981' }}>
-                    🎙️ Jarvis Tour ({currentStopIndex + 1}/{totalStops})
-                  </span>
-                  <span className="text-sm truncate" style={{ color: 'var(--text-primary)' }}>
-                    {tourFeedback || currentStop?.title || "Starting..."}
-                  </span>
-                </>
-              ) : (
-                <>
-                  <span className="text-xs font-semibold mb-0.5 tracking-wider uppercase" style={{ color: 'var(--text-muted)' }}>
-                    {isListening ? "Listening (Ctrl+V)" : "Voice Command"}
-                  </span>
-                  <span className="text-sm truncate">
-                    {transcript ? (
-                      <span style={{ color: 'var(--text-primary)' }}>"{transcript}..."</span>
-                    ) : (
-                      <span style={{ color: 'var(--text-secondary)' }}>
-                        {feedback || tourFeedback || "Idle"}
-                      </span>
-                    )}
-                  </span>
-                </>
-              )}
+              <span
+                className="text-xs font-semibold mb-0.5 tracking-wider uppercase"
+                style={{ color: statusLabelColor }}
+              >
+                {statusLabel}
+              </span>
+              {statusContent()}
             </div>
 
-            {/* Tour Button (only when not touring and not actively listening) */}
-            {!isTouring && !isListening && (
+            {/* Dictation stop button */}
+            {isDictating && (
+              <motion.button
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                onClick={toggleListening}
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold transition-all hover:scale-105"
+                style={{
+                  background: "linear-gradient(135deg, #f59e0b, #d97706)",
+                  color: "white",
+                }}
+                title="Stop Dictation"
+              >
+                <Square className="w-3 h-3" />
+                Stop
+              </motion.button>
+            )}
+
+            {/* Tour Button (only when not touring, not dictating, and not actively listening) */}
+            {!isTouring && !isListening && !isDictating && (
               <motion.button
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 onClick={startTour}
                 className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold transition-all hover:scale-105"
                 style={{
-                  background: 'linear-gradient(135deg, #10b981, #059669)',
-                  color: 'white',
+                  background: "linear-gradient(135deg, #10b981, #059669)",
+                  color: "white",
                 }}
                 title="Start Jarvis Guided Tour"
               >
