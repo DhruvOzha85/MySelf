@@ -14,9 +14,8 @@ function voiceSlug(title: string): string {
 export function ProjectsSection() {
   // Custom sorting to make CropPilot (ID: 2) the featured flagship project!
   const sortedProjects = [
-    projects.find(p => p.id === 2)!, // CropPilot
-    projects.find(p => p.id === 3)!, // AI Engine
-    projects.find(p => p.id === 1)!, // Web Clone
+    projects.find(p => p.id === 2)!, // CropPilot first as flagship
+    ...projects.filter(p => p.id !== 2), // Then all other projects
   ];
 
   return (

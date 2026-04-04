@@ -93,6 +93,16 @@ export const projects = [
     githubUrl: "https://github.com/DhruvOzha85/IISC_HACK",
     featured: true,
   },
+  {
+    id: 4,
+    title: "PinIndia",
+    description: "A full-stack Indian PIN code explorer that lets you instantly search any 6-digit postal code, browse pincodes by state/district/taluk, view live stats through interactive charts, calculate distances between pincodes, and export data as CSV.",
+    image: "/pinindia.png",
+    techStack: ["React", "Node.js", "Express", "MongoDB", "Tailwind CSS"],
+    liveUrl: "https://pin-india.vercel.app/",
+    githubUrl: "https://github.com/DhruvOzha85/PinIndia",
+    featured: true,
+  },
 ];
 
 export const certificates = [
