@@ -1,3 +1,0 @@
-# 
-
-{"status":"success","message":"retrieved","totalSolved":1,"totalQuestions":3887,"easySolved":1,"totalEasy":935,"mediumSolved":0,"totalMedium":2033,"hardSolved":0,"totalHard":919,"acceptanceRate":100.0,"ranking":5000001,"contributionPoints":24,"reputation":0,"submissionCalendar":{"1770076800":2}}
